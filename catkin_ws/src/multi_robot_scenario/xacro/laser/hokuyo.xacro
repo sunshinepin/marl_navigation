@@ -54,7 +54,7 @@
           <plugin name="laser" filename="libgazebo_ros_laser.so" >
             <robotNamespace></robotNamespace>
             <topicName>${name}/scan</topicName>
-            <frameName>${name}</frameName>
+            <frameName>car1/${name}</frameName>
           </plugin>
           <!--
           <plugin name="laser" filename="libRayPlugin.so" />
