@@ -1,0 +1,10 @@
+Epoch 1, timestep 500
+Car1 Episode 1: Reward -120.69305350473223
+Car2 Episode 1: Reward -148.5604739858327
+Car3 Episode 1: Reward 38647.33949203293
+Car4 Episode 1: Reward 18400.09126763249
+Epoch 1, timestep 1000
+Car1 Episode 2: Reward -171.57173817104254
+Car2 Episode 2: Reward -264.2075561972364
+Car3 Episode 2: Reward 31386.089218158402
+Car4 Episode 2: Reward 9564.439102935903

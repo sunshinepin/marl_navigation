@@ -1,7 +1,4 @@
-"""
-Data structure for implementing experience replay
-Author: Patrick Emami
-"""
+
 import random
 from collections import deque
 

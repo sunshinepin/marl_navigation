@@ -2,9 +2,7 @@
 
   <arg name="robot_name" default="p3dx" />
   <arg name="robot_position" default="-x -1.0 -y 5.0 -z 0.01" />
-
-
-
+  
     <!-- Load the URDF into the ROS Parameter Server -->
     <param name="robot_description" command="$(find xacro)/xacro '$(find multi_robot_scenario)/xacro/p3dx/pioneer3dx.xacro'" />
 

@@ -824,10 +824,10 @@
         </link>
       </model>
       <model name='cardboard_box_3'>
-        <pose>-7.69986 -5.17093 0.15 0 -0 0</pose>
+        <pose>--9 -5.17093 0.15 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>-7.69986 -5.17093 0.15 0 -0 0</pose>
+          <pose>-9 -5.17093 0.15 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>

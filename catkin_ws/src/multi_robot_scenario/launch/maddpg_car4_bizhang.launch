@@ -1,0 +1,131 @@
+<launch>
+  <arg name="car1_name" default="car1" />
+  <arg name="car1_x" default="0.0" />
+  <arg name="car1_y" default="5.0" />
+  <arg name="car1_z" default="0.01" />
+
+  <arg name="car2_name" default="car2" />
+  <arg name="car2_x" default="0.0" />
+  <arg name="car2_y" default="-5.0" />
+  <arg name="car2_z" default="0.01" />
+
+  <arg name="car3_name" default="car3" />
+  <arg name="car3_x" default="-5.0" />
+  <arg name="car3_y" default="0.0" />
+  <arg name="car3_z" default="0.01" />
+  
+  <arg name="car4_name" default="car4" />
+  <arg name="car4_x" default="5.0" />
+  <arg name="car4_y" default="0.0" />
+  <arg name="car4_z" default="0.01" />
+
+  <group ns="$(arg car1_name)">
+    <!-- Load the URDF for car1 into the ROS Parameter Server -->
+    <param name="robot_description" command="$(find xacro)/xacro '$(find multi_robot_scenario)/xacro/p3dx/pioneer3dx.xacro' "/>
+    <param name="laser_frame_id" value="car1/front_laser"/>
+    <!-- Run a python script to send a service call to gazebo_ros to spawn a URDF robot for car1 -->
+    <node name="urdf_spawner_car1" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model $(arg car1_name) -param robot_description -x $(arg car1_x) -y $(arg car1_y) -z $(arg car1_z)"/>
+
+    <!-- Robot State Publisher for car1 -->
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher_car1" >
+      <param name="publish_frequency" type="double" value="30.0"/>
+      <param name="tf_prefix" type="string" value="$(arg car1_name)"/>
+    </node>
+
+    <!-- Joint State Publisher for car1 -->
+    <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher_car1" >
+      <param name="publish_frequency" type="double" value="30.0"/>
+    </node>
+
+    <!-- Combined broadcaster for car1 -->
+    <node pkg="multi_robot_scenario" name="publish_odom_from_gazebo_car1" type="publish_odom_from_gazebo_model_tf.py" output="screen">
+      <param name="car_name" value="car1" />
+    </node>
+  </group>
+
+  <group ns="$(arg car2_name)">
+    <!-- Load the URDF for car2 into the ROS Parameter Server -->
+    <param name="robot_description" command="$(find xacro)/xacro '$(find multi_robot_scenario)/xacro/p3dx1/pioneer3dx.xacro' "/>
+    <param name="laser_frame_id" value="car2/front_laser"/>
+    
+    <!-- Run a python script to send a service call to gazebo_ros to spawn a URDF robot for car2 -->
+    <node name="urdf_spawner_car2" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model $(arg car2_name) -param robot_description -x $(arg car2_x) -y $(arg car2_y) -z $(arg car2_z)"/>
+
+    <!-- Robot State Publisher for car2 -->
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher_car2" >
+      <param name="publish_frequency" type="double" value="30.0"/>
+      <param name="tf_prefix" type="string" value="$(arg car2_name)"/>
+    </node>
+
+    <!-- Joint State Publisher for car2 -->
+    <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher_car2" >
+      <param name="publish_frequency" type="double" value="30.0"/>
+    </node>
+
+    <!-- Combined broadcaster for car2 -->
+    <node pkg="multi_robot_scenario" name="publish_odom_from_gazebo_car2" type="publish_odom_from_gazebo_model_tf.py" output="screen">
+      <param name="car_name" value="car2" />
+    </node>
+  </group>
+
+  <group ns="$(arg car3_name)">
+    <!-- Load the URDF for car3 into the ROS Parameter Server -->
+    <param name="robot_description" command="$(find xacro)/xacro '$(find multi_robot_scenario)/xacro/p3dx2/pioneer3dx.xacro' "/>
+    <param name="laser_frame_id" value="car3/front_laser"/>
+    <!-- Run a python script to send a service call to gazebo_ros to spawn a URDF robot for car3 -->
+    <node name="urdf_spawner_car3" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model $(arg car3_name) -param robot_description -x $(arg car3_x) -y $(arg car3_y) -z $(arg car3_z)"/>
+
+    <!-- Robot State Publisher for car3 -->
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher_car3" >
+      <param name="publish_frequency" type="double" value="30.0"/>
+      <param name="tf_prefix" type="string" value="$(arg car3_name)"/>
+    </node>
+
+    <!-- Joint State Publisher for car3 -->
+    <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher_car3" >
+      <param name="publish_frequency" type="double" value="30.0"/>
+    </node>
+
+    <!-- Combined broadcaster for car3 -->
+    <node pkg="multi_robot_scenario" name="publish_odom_from_gazebo_car3" type="publish_odom_from_gazebo_model_tf.py" output="screen">
+      <param name="car_name" value="car3" />
+    </node>
+  </group>
+
+  <group ns="$(arg car4_name)">
+    <!-- Load the URDF for car4 into the ROS Parameter Server -->
+    <param name="robot_description" command="$(find xacro)/xacro '$(find multi_robot_scenario)/xacro/p3dx3/pioneer3dx.xacro' "/>
+    <param name="laser_frame_id" value="car4/front_laser"/>
+    <!-- Run a python script to send a service call to gazebo_ros to spawn a URDF robot for car4 -->
+    <node name="urdf_spawner_car4" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model $(arg car4_name) -param robot_description -x $(arg car4_x) -y $(arg car4_y) -z $(arg car4_z)"/>
+
+    <!-- Robot State Publisher for car4 -->
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher_car4" >
+      <param name="publish_frequency" type="double" value="30.0"/>
+      <param name="tf_prefix" type="string" value="$(arg car4_name)"/>
+    </node>
+
+    <!-- Joint State Publisher for car4 -->
+    <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher_car4" >
+      <param name="publish_frequency" type="double" value="30.0"/>
+    </node>
+
+    <!-- Combined broadcaster for car4 -->
+    <node pkg="multi_robot_scenario" name="publish_odom_from_gazebo_car4" type="publish_odom_from_gazebo_model_tf.py" output="screen">
+      <param name="car_name" value="car4" />
+    </node>
+  </group>
+
+  <!-- Launch gazebo with the specified world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find multi_robot_scenario)/world/ca1_test.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <!-- RViz Configuration -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find multi_robot_scenario)/launch/sum4.rviz"/>
+</launch>

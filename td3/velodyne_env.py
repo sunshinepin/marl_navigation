@@ -95,24 +95,9 @@ class GazeboEnv:
             )
         self.gaps[-1][-1] += 0.03
 
-        # port = "11311"
-        # subprocess.Popen(["roscore", "-p", port])
-
         print("Roscore launched!")
-
-        # Launch the simulation with the given launchfile name
         rospy.init_node("gym", anonymous=True)
-        # if launchfile.startswith("/"):
-        #     fullpath = launchfile
-        # else:
-        #     fullpath = os.path.join(os.path.dirname(__file__), "assets", launchfile)
-        # if not path.exists(fullpath):
-        #     raise IOError("File " + fullpath + " does not exist")
 
-        # subprocess.Popen(["roslaunch", "-p", port, fullpath])
-        # print("Gazebo launched!")
-
-        # Set up the ROS publishers and subscribers
         self.vel_pub = rospy.Publisher("/car1/cmd_vel", Twist, queue_size=1)
         self.set_state = rospy.Publisher(
             "gazebo/set_model_state", ModelState, queue_size=10
@@ -130,8 +115,6 @@ class GazeboEnv:
             "/car1/odom_gazebo", Odometry, self.odom_callback, queue_size=1
         )
 
-    # Read velodyne pointcloud and turn it into distance data, then select the minimum value for each angle
-    # range as state representation
     def velodyne_callback(self, v):
         data = list(pc2.read_points(v, skip_nans=False, field_names=("x", "y", "z")))
         self.velodyne_data = np.ones(self.environment_dim) * 10

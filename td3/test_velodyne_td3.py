@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from velodyne_env import GazeboEnv
+from td3.td3_singal.velodyne_env_car2 import GazeboEnv2
 
 
 class Actor(nn.Module):
@@ -41,18 +41,16 @@ class TD3(object):
             torch.load("%s/%s_actor.pth" % (directory, filename))
         )
 
-
 # Set the parameters for the implementation
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")  # cuda or cpu
 seed = 0  # Random seed number
 max_ep = 500  # maximum number of steps per episode
 file_name = "TD3_velodyne"  # name of the file to load the policy from
 
-
 # Create the testing environment
 environment_dim = 20
 robot_dim = 4
-env = GazeboEnv("td3.launch", environment_dim)
+env = GazeboEnv2("td3.launch", environment_dim)
 time.sleep(5)
 torch.manual_seed(seed)
 np.random.seed(seed)

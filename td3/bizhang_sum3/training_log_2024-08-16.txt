@@ -1,0 +1,1840 @@
+Epoch 1, timestep 319
+Car1 Episode 1: Reward 88.87309941686004
+Car2 Episode 1: Reward 84.52026997760068
+Car3 Episode 1: Reward 108.96151075041546
+Epoch 1, timestep 819
+Car1 Episode 2: Reward 230.9301891906167
+Car2 Episode 2: Reward 37.58056887564976
+Car3 Episode 2: Reward 215.87511678303756
+Epoch 1, timestep 1319
+Car1 Episode 3: Reward 1103.2072136945023
+Car2 Episode 3: Reward 176.2989377057828
+Car3 Episode 3: Reward 218.63697432090757
+Epoch 1, timestep 1819
+Car1 Episode 4: Reward 560.9189071109148
+Car2 Episode 4: Reward 1745.8176158483893
+Car3 Episode 4: Reward 194.3858493387715
+Epoch 1, timestep 2319
+Car1 Episode 5: Reward 604.4148212299013
+Car2 Episode 5: Reward 124.04378538017038
+Car3 Episode 5: Reward 146.63480563028168
+Epoch 1, timestep 2819
+Car1 Episode 6: Reward 1731.5438872495272
+Car2 Episode 6: Reward 344.50060709387174
+Car3 Episode 6: Reward 418.50563320774364
+Epoch 1, timestep 3319
+Car1 Episode 7: Reward 29.141988570772508
+Car2 Episode 7: Reward 859.9778275066398
+Car3 Episode 7: Reward 982.8655438451207
+Epoch 1, timestep 3819
+Car1 Episode 8: Reward 381.67415888017484
+Car2 Episode 8: Reward 964.3773655541886
+Car3 Episode 8: Reward -201.98727177553357
+Epoch 1, timestep 4319
+Car1 Episode 9: Reward -28.073152521673812
+Car2 Episode 9: Reward 26.91024269250847
+Car3 Episode 9: Reward 78.42887954583792
+Epoch 1, timestep 4819
+Car1 Episode 10: Reward 345.806311611789
+Car2 Episode 10: Reward 810.1591265789943
+Car3 Episode 10: Reward 180.19091303561237
+Epoch 1, timestep 5319
+Car1 Episode 11: Reward 159.22711538383408
+Car2 Episode 11: Reward 808.3984646413782
+Car3 Episode 11: Reward 116.63343024517005
+Epoch 2, timestep 5819
+Car1 Episode 12: Reward 532.9986822887836
+Car2 Episode 12: Reward 719.2438789450216
+Car3 Episode 12: Reward 94.52678191110617
+Epoch 2, timestep 6319
+Car1 Episode 13: Reward 160.83281855266407
+Car2 Episode 13: Reward 1562.1727712427667
+Car3 Episode 13: Reward 161.01213487151358
+Epoch 2, timestep 6819
+Car1 Episode 14: Reward 262.0221504772707
+Car2 Episode 14: Reward 472.3268006586604
+Car3 Episode 14: Reward 335.41167399770677
+Epoch 2, timestep 7319
+Car1 Episode 15: Reward 983.1638495350959
+Car2 Episode 15: Reward 364.94797483539503
+Car3 Episode 15: Reward 123.1114552541665
+Epoch 2, timestep 7819
+Car1 Episode 16: Reward 992.3838483612737
+Car2 Episode 16: Reward 267.8529597593845
+Car3 Episode 16: Reward 93.44104285580131
+Epoch 2, timestep 8319
+Car1 Episode 17: Reward 1669.715582948042
+Car2 Episode 17: Reward 1208.2075864571307
+Car3 Episode 17: Reward 1064.596542578729
+Epoch 2, timestep 8819
+Car1 Episode 18: Reward 1033.2170405540066
+Car2 Episode 18: Reward 255.82645126091754
+Car3 Episode 18: Reward 352.6541410135832
+Epoch 2, timestep 9319
+Car1 Episode 19: Reward 1623.332211651748
+Car2 Episode 19: Reward 463.1729650488453
+Car3 Episode 19: Reward 233.97861732263829
+Epoch 2, timestep 9819
+Car1 Episode 20: Reward 611.5007162880179
+Car2 Episode 20: Reward 148.49319053921766
+Car3 Episode 20: Reward 171.60287585997816
+Epoch 2, timestep 10319
+Car1 Episode 21: Reward -21.33959185129347
+Car2 Episode 21: Reward 169.35310906653052
+Car3 Episode 21: Reward 123.49218367043126
+Epoch 3, timestep 10819
+Car1 Episode 22: Reward 794.4395018648698
+Car2 Episode 22: Reward 113.1321333351839
+Car3 Episode 22: Reward 255.0881113713672
+Epoch 3, timestep 11319
+Car1 Episode 23: Reward 976.4428493958645
+Car2 Episode 23: Reward 491.5516920123962
+Car3 Episode 23: Reward 352.0010710535402
+Epoch 3, timestep 11819
+Car1 Episode 24: Reward 71.36045834471037
+Car2 Episode 24: Reward 942.322135713474
+Car3 Episode 24: Reward 180.0726588871745
+Epoch 3, timestep 12319
+Car1 Episode 25: Reward 1362.8708430932436
+Car2 Episode 25: Reward 323.17065529123175
+Car3 Episode 25: Reward 1053.715032380942
+Epoch 3, timestep 12819
+Car1 Episode 26: Reward -41.99681283645868
+Car2 Episode 26: Reward 595.208358558767
+Car3 Episode 26: Reward 127.7247624638498
+Epoch 3, timestep 13319
+Car1 Episode 27: Reward 642.9767396721593
+Car2 Episode 27: Reward 1273.760741282457
+Car3 Episode 27: Reward 425.6255534059544
+Epoch 3, timestep 13819
+Car1 Episode 28: Reward 1063.0908365554449
+Car2 Episode 28: Reward 381.8804671327624
+Car3 Episode 28: Reward 258.39053694380976
+Epoch 3, timestep 14319
+Car1 Episode 29: Reward 946.9736209576134
+Car2 Episode 29: Reward 298.1509782767328
+Car3 Episode 29: Reward -40.194390633707
+Epoch 3, timestep 14716
+Car1 Episode 30: Reward -239.21629395218406
+Car2 Episode 30: Reward 89.17058096666183
+Car3 Episode 30: Reward 77.07019686819608
+Epoch 3, timestep 15216
+Car1 Episode 31: Reward 1516.8203379324586
+Car2 Episode 31: Reward 320.8814650889957
+Car3 Episode 31: Reward 142.00653010343711
+Epoch 4, timestep 15716
+Car1 Episode 32: Reward 1871.451351222428
+Car2 Episode 32: Reward 255.9805371624938
+Car3 Episode 32: Reward 814.2523370399986
+Epoch 4, timestep 16216
+Car1 Episode 33: Reward 1537.7951452500604
+Car2 Episode 33: Reward 245.7155535624695
+Car3 Episode 33: Reward 901.1449933539623
+Epoch 4, timestep 16716
+Car1 Episode 34: Reward 613.9000476522715
+Car2 Episode 34: Reward 173.77185437918033
+Car3 Episode 34: Reward 206.49217204603718
+Epoch 4, timestep 17216
+Car1 Episode 35: Reward 314.9783867651965
+Car2 Episode 35: Reward 156.14174847830571
+Car3 Episode 35: Reward 154.2079202708617
+Epoch 4, timestep 17716
+Car1 Episode 36: Reward 114.09113253808613
+Car2 Episode 36: Reward 265.7300050386607
+Car3 Episode 36: Reward 247.65675839910497
+Epoch 4, timestep 18216
+Car1 Episode 37: Reward 1557.0088621909097
+Car2 Episode 37: Reward 162.04545272015554
+Car3 Episode 37: Reward 84.54115821938092
+Epoch 4, timestep 18716
+Car1 Episode 38: Reward 530.4852897019512
+Car2 Episode 38: Reward 302.19606499360987
+Car3 Episode 38: Reward 172.09612658832847
+Epoch 4, timestep 19216
+Car1 Episode 39: Reward 1983.0410658337037
+Car2 Episode 39: Reward 717.5565572959939
+Car3 Episode 39: Reward 373.0375083904764
+Epoch 4, timestep 19716
+Car1 Episode 40: Reward -158.45684549139457
+Car2 Episode 40: Reward 1078.7326601058296
+Car3 Episode 40: Reward 124.87090347258042
+Epoch 4, timestep 20216
+Car1 Episode 41: Reward 721.421840686815
+Car2 Episode 41: Reward 270.1616001187379
+Car3 Episode 41: Reward 242.02855066843142
+Epoch 5, timestep 20716
+Car1 Episode 42: Reward 849.3759077259
+Car2 Episode 42: Reward 217.96216724072548
+Car3 Episode 42: Reward 223.8756740133689
+Epoch 5, timestep 20954
+Car1 Episode 43: Reward 11.82346283001417
+Car2 Episode 43: Reward 56.65636294541302
+Car3 Episode 43: Reward 125.49857287982259
+Epoch 5, timestep 21454
+Car1 Episode 44: Reward 917.4896612887624
+Car2 Episode 44: Reward 248.53477628512513
+Car3 Episode 44: Reward 1042.8716464150993
+Epoch 5, timestep 21954
+Car1 Episode 45: Reward 1859.5998204587142
+Car2 Episode 45: Reward 503.056408159646
+Car3 Episode 45: Reward 305.65234032981095
+Epoch 5, timestep 22454
+Car1 Episode 46: Reward 824.8411618837861
+Car2 Episode 46: Reward 131.36645208159456
+Car3 Episode 46: Reward 170.3381205144339
+Epoch 5, timestep 22954
+Car1 Episode 47: Reward 209.5662114068996
+Car2 Episode 47: Reward 339.47152589268035
+Car3 Episode 47: Reward 185.30123355362565
+Epoch 5, timestep 23454
+Car1 Episode 48: Reward -688.6924217240926
+Car2 Episode 48: Reward 352.65285336727254
+Car3 Episode 48: Reward 122.68388770536806
+Epoch 5, timestep 23954
+Car1 Episode 49: Reward 392.39631825590016
+Car2 Episode 49: Reward 449.6683478067639
+Car3 Episode 49: Reward 938.867073084002
+Epoch 5, timestep 24454
+Car1 Episode 50: Reward 1860.9883067046662
+Car2 Episode 50: Reward 251.87119040445853
+Car3 Episode 50: Reward 1067.6779222070752
+Epoch 5, timestep 24954
+Car1 Episode 51: Reward 1560.1292048575901
+Car2 Episode 51: Reward 474.9021358008487
+Car3 Episode 51: Reward 292.7008665235292
+Epoch 5, timestep 25454
+Car1 Episode 52: Reward 63.693566817139086
+Car2 Episode 52: Reward 229.48782518257514
+Car3 Episode 52: Reward 299.5232055579893
+Epoch 6, timestep 25954
+Car1 Episode 53: Reward 145.12879511788276
+Car2 Episode 53: Reward 128.78677738155508
+Car3 Episode 53: Reward 209.5295492347132
+Epoch 6, timestep 26454
+Car1 Episode 54: Reward 753.4065751281623
+Car2 Episode 54: Reward 225.42538268718312
+Car3 Episode 54: Reward 499.60066869443926
+Epoch 6, timestep 26954
+Car1 Episode 55: Reward 680.2830538245697
+Car2 Episode 55: Reward 1614.6093221696776
+Car3 Episode 55: Reward 436.43742274248876
+Epoch 6, timestep 27454
+Car1 Episode 56: Reward 610.0741578683711
+Car2 Episode 56: Reward 504.2300870726372
+Car3 Episode 56: Reward 369.1295622528688
+Epoch 6, timestep 27954
+Car1 Episode 57: Reward 380.31802032957165
+Car2 Episode 57: Reward 343.7600249441945
+Car3 Episode 57: Reward 388.36845825268466
+Epoch 6, timestep 28454
+Car1 Episode 58: Reward 1384.7041423676303
+Car2 Episode 58: Reward 195.39220246742403
+Car3 Episode 58: Reward 407.69764701825886
+Epoch 6, timestep 28954
+Car1 Episode 59: Reward 988.4148957596236
+Car2 Episode 59: Reward 377.6261778313607
+Car3 Episode 59: Reward 1098.7475977323847
+Epoch 6, timestep 29454
+Car1 Episode 60: Reward 732.3140715349637
+Car2 Episode 60: Reward 183.16098878505613
+Car3 Episode 60: Reward 176.0741691698127
+Epoch 6, timestep 29954
+Car1 Episode 61: Reward -189.2851038550088
+Car2 Episode 61: Reward 369.61739275968273
+Car3 Episode 61: Reward 240.9256462075007
+Epoch 6, timestep 30454
+Car1 Episode 62: Reward 1589.5010295673446
+Car2 Episode 62: Reward 435.7572963377577
+Car3 Episode 62: Reward 230.25707285548938
+Epoch 7, timestep 30954
+Car1 Episode 63: Reward 809.3256570147267
+Car2 Episode 63: Reward 160.0894071466825
+Car3 Episode 63: Reward 289.2466832369647
+Epoch 7, timestep 31454
+Car1 Episode 64: Reward 1676.6624670370372
+Car2 Episode 64: Reward 104.2945078585336
+Car3 Episode 64: Reward 181.79170550104888
+Epoch 7, timestep 31954
+Car1 Episode 65: Reward 1357.959868325461
+Car2 Episode 65: Reward 324.50631398360485
+Car3 Episode 65: Reward 132.49553142946957
+Epoch 7, timestep 32454
+Car1 Episode 66: Reward 962.1931743588967
+Car2 Episode 66: Reward 588.2373069885012
+Car3 Episode 66: Reward 129.33178605631548
+Epoch 7, timestep 32954
+Car1 Episode 67: Reward 34.346376827914625
+Car2 Episode 67: Reward 433.12224387830315
+Car3 Episode 67: Reward 432.5262779793345
+Epoch 7, timestep 33454
+Car1 Episode 68: Reward 313.9528159830209
+Car2 Episode 68: Reward 239.37510376468086
+Car3 Episode 68: Reward 586.1822788043214
+Epoch 7, timestep 33954
+Car1 Episode 69: Reward 233.7646318853562
+Car2 Episode 69: Reward 226.1394244077389
+Car3 Episode 69: Reward 237.69892109668874
+Epoch 7, timestep 34454
+Car1 Episode 70: Reward 450.63028994504884
+Car2 Episode 70: Reward 507.0010034615094
+Car3 Episode 70: Reward 147.80808930032646
+Epoch 7, timestep 34954
+Car1 Episode 71: Reward 1071.0582748965342
+Car2 Episode 71: Reward 170.07660425370375
+Car3 Episode 71: Reward 161.0491730827109
+Epoch 7, timestep 35454
+Car1 Episode 72: Reward 428.90643078842027
+Car2 Episode 72: Reward 585.460814126969
+Car3 Episode 72: Reward 240.83089474752134
+Epoch 8, timestep 35954
+Car1 Episode 73: Reward 1350.5278626933607
+Car2 Episode 73: Reward 300.03027202969207
+Car3 Episode 73: Reward 266.88022422252465
+Epoch 8, timestep 36454
+Car1 Episode 74: Reward 1510.985878586868
+Car2 Episode 74: Reward 141.2502304971621
+Car3 Episode 74: Reward 175.58451681269156
+Epoch 8, timestep 36652
+Car1 Episode 75: Reward -249.02256460047752
+Car2 Episode 75: Reward 75.22502205912917
+Car3 Episode 75: Reward 186.20320986155573
+Epoch 8, timestep 37152
+Car1 Episode 76: Reward 1099.4415938224272
+Car2 Episode 76: Reward 189.85089376662944
+Car3 Episode 76: Reward 246.2375552678015
+Epoch 8, timestep 37652
+Car1 Episode 77: Reward 929.2426302501533
+Car2 Episode 77: Reward 42.74112763172521
+Car3 Episode 77: Reward 301.0162916965676
+Epoch 8, timestep 38152
+Car1 Episode 78: Reward 699.6206347354586
+Car2 Episode 78: Reward 696.2605339445727
+Car3 Episode 78: Reward 144.96319619150663
+Epoch 8, timestep 38652
+Car1 Episode 79: Reward 595.313300715512
+Car2 Episode 79: Reward 243.3824483160375
+Car3 Episode 79: Reward 182.17577686599873
+Epoch 8, timestep 39152
+Car1 Episode 80: Reward 510.60128578900895
+Car2 Episode 80: Reward 8.42991398374653
+Car3 Episode 80: Reward 1477.2175664623219
+Epoch 8, timestep 39527
+Car1 Episode 81: Reward 140.13902248950052
+Car2 Episode 81: Reward 199.53229274786
+Car3 Episode 81: Reward 79.9243046520598
+Epoch 8, timestep 40027
+Car1 Episode 82: Reward 489.2518694480504
+Car2 Episode 82: Reward -44.6841352776203
+Car3 Episode 82: Reward 200.36476404009056
+Epoch 9, timestep 40527
+Car1 Episode 83: Reward 1338.300691728812
+Car2 Episode 83: Reward 149.69354486537287
+Car3 Episode 83: Reward 285.7323558224189
+Epoch 9, timestep 41027
+Car1 Episode 84: Reward 941.1267389653204
+Car2 Episode 84: Reward 1171.264450541198
+Car3 Episode 84: Reward 171.69120224081138
+Epoch 9, timestep 41365
+Car1 Episode 85: Reward 372.130209892085
+Car2 Episode 85: Reward 182.76927198482295
+Car3 Episode 85: Reward 343.19767839013986
+Epoch 9, timestep 41865
+Car1 Episode 86: Reward 708.466112531985
+Car2 Episode 86: Reward 259.03707741087186
+Car3 Episode 86: Reward 240.1039084618685
+Epoch 9, timestep 42365
+Car1 Episode 87: Reward 609.3903878932716
+Car2 Episode 87: Reward 478.6070112425511
+Car3 Episode 87: Reward 159.32757626951204
+Epoch 9, timestep 42865
+Car1 Episode 88: Reward -21.833701923376278
+Car2 Episode 88: Reward 642.1718002187162
+Car3 Episode 88: Reward 266.67192562945627
+Epoch 9, timestep 43365
+Car1 Episode 89: Reward 620.5894715565993
+Car2 Episode 89: Reward 176.87142429748118
+Car3 Episode 89: Reward 175.47854587508618
+Epoch 9, timestep 43865
+Car1 Episode 90: Reward 1355.313593475259
+Car2 Episode 90: Reward 235.74450073342916
+Car3 Episode 90: Reward 382.9341979352282
+Epoch 9, timestep 44365
+Car1 Episode 91: Reward 454.96340908661966
+Car2 Episode 91: Reward 102.91633827404273
+Car3 Episode 91: Reward 156.2553091183602
+Epoch 9, timestep 44865
+Car1 Episode 92: Reward 1175.6788814000508
+Car2 Episode 92: Reward 153.14314242287298
+Car3 Episode 92: Reward 213.420090053694
+Epoch 9, timestep 45365
+Car1 Episode 93: Reward 1098.5661659198713
+Car2 Episode 93: Reward 163.76762460464843
+Car3 Episode 93: Reward 228.97551034578163
+Epoch 10, timestep 45865
+Car1 Episode 94: Reward 246.18096943514857
+Car2 Episode 94: Reward 278.61780968322194
+Car3 Episode 94: Reward 249.07875467512255
+Epoch 10, timestep 46159
+Car1 Episode 95: Reward 168.78174694563504
+Car2 Episode 95: Reward 142.22876586893247
+Car3 Episode 95: Reward 338.4078252071026
+Epoch 10, timestep 46659
+Car1 Episode 96: Reward 740.3364833658491
+Car2 Episode 96: Reward 871.9440394414911
+Car3 Episode 96: Reward 169.08010914265023
+Epoch 10, timestep 47159
+Car1 Episode 97: Reward 674.2052832844823
+Car2 Episode 97: Reward 504.01580667570954
+Car3 Episode 97: Reward 239.29299662319298
+Epoch 10, timestep 47659
+Car1 Episode 98: Reward 568.1945755752389
+Car2 Episode 98: Reward 252.94377537787054
+Car3 Episode 98: Reward 196.07396770582488
+Epoch 10, timestep 48159
+Car1 Episode 99: Reward 1158.8348825483645
+Car2 Episode 99: Reward 79.37562862857385
+Car3 Episode 99: Reward 172.0033759435478
+Epoch 10, timestep 48659
+Car1 Episode 100: Reward 223.87162376181732
+Car2 Episode 100: Reward 319.0916017154017
+Car3 Episode 100: Reward 126.94536761704398
+Epoch 10, timestep 49159
+Car1 Episode 101: Reward 400.669825599708
+Car2 Episode 101: Reward 1223.9638297707136
+Car3 Episode 101: Reward 138.98197889561018
+Epoch 10, timestep 49659
+Car1 Episode 102: Reward 2030.8466914480002
+Car2 Episode 102: Reward 431.92261143537564
+Car3 Episode 102: Reward 387.8959218900462
+Epoch 10, timestep 50159
+Car1 Episode 103: Reward 540.2410318463316
+Car2 Episode 103: Reward 1145.4763882064663
+Car3 Episode 103: Reward 383.51492467179355
+Epoch 11, timestep 50659
+Car1 Episode 104: Reward 423.88365490113915
+Car2 Episode 104: Reward 433.6204966214809
+Car3 Episode 104: Reward 182.62890212988873
+Epoch 11, timestep 51159
+Car1 Episode 105: Reward 94.86923283632859
+Car2 Episode 105: Reward 209.7298028403759
+Car3 Episode 105: Reward 829.6165408825746
+Epoch 11, timestep 51659
+Car1 Episode 106: Reward 517.7556538117493
+Car2 Episode 106: Reward 306.8607255619544
+Car3 Episode 106: Reward -70.01527000452516
+Epoch 11, timestep 52159
+Car1 Episode 107: Reward 492.8996010751056
+Car2 Episode 107: Reward 278.59562599711353
+Car3 Episode 107: Reward 376.1218107628056
+Epoch 11, timestep 52659
+Car1 Episode 108: Reward 409.58582355827684
+Car2 Episode 108: Reward 595.4275656186675
+Car3 Episode 108: Reward 247.85992280362223
+Epoch 11, timestep 53159
+Car1 Episode 109: Reward 827.2652378413277
+Car2 Episode 109: Reward 648.786704677813
+Car3 Episode 109: Reward 744.927758675146
+Epoch 11, timestep 53659
+Car1 Episode 110: Reward 346.0241021879652
+Car2 Episode 110: Reward 451.3282924370276
+Car3 Episode 110: Reward 239.8752623733569
+Epoch 11, timestep 54159
+Car1 Episode 111: Reward 400.06851267795923
+Car2 Episode 111: Reward 380.04143634821446
+Car3 Episode 111: Reward 389.00021546194057
+Epoch 11, timestep 54659
+Car1 Episode 112: Reward 694.0736906635404
+Car2 Episode 112: Reward 414.57077216053244
+Car3 Episode 112: Reward 253.96766063508002
+Epoch 11, timestep 55159
+Car1 Episode 113: Reward 219.9557662475107
+Car2 Episode 113: Reward 627.0113952114485
+Car3 Episode 113: Reward 210.72520116344091
+Epoch 12, timestep 55659
+Car1 Episode 114: Reward 58.15766698061286
+Car2 Episode 114: Reward 236.75041806707486
+Car3 Episode 114: Reward 1169.171173989121
+Epoch 12, timestep 56159
+Car1 Episode 115: Reward 354.47266058772186
+Car2 Episode 115: Reward 145.5627210227335
+Car3 Episode 115: Reward 170.4173332106069
+Epoch 12, timestep 56659
+Car1 Episode 116: Reward 1371.2403805177341
+Car2 Episode 116: Reward 173.75272216760425
+Car3 Episode 116: Reward 251.53105198695397
+Epoch 12, timestep 57159
+Car1 Episode 117: Reward 687.4936443957005
+Car2 Episode 117: Reward 584.1250209554803
+Car3 Episode 117: Reward 301.1154814389505
+Epoch 12, timestep 57659
+Car1 Episode 118: Reward 527.7316312871984
+Car2 Episode 118: Reward 120.69315600342121
+Car3 Episode 118: Reward 244.0558470626649
+Epoch 12, timestep 58159
+Car1 Episode 119: Reward -26.855141062534322
+Car2 Episode 119: Reward 358.8808188352069
+Car3 Episode 119: Reward 281.96775690988903
+Epoch 12, timestep 58659
+Car1 Episode 120: Reward 203.1876037902201
+Car2 Episode 120: Reward 621.6132019252143
+Car3 Episode 120: Reward 246.88037121250576
+Epoch 12, timestep 59159
+Car1 Episode 121: Reward 481.693400749217
+Car2 Episode 121: Reward 686.886398106745
+Car3 Episode 121: Reward 131.71769392143818
+Epoch 12, timestep 59659
+Car1 Episode 122: Reward 1311.4526220030361
+Car2 Episode 122: Reward 488.6622178665508
+Car3 Episode 122: Reward 189.53171232618254
+Epoch 12, timestep 60159
+Car1 Episode 123: Reward 16.988027462991614
+Car2 Episode 123: Reward 108.53121705863948
+Car3 Episode 123: Reward 314.05781009028055
+Epoch 13, timestep 60659
+Car1 Episode 124: Reward 666.7546587294545
+Car2 Episode 124: Reward 152.73832733819015
+Car3 Episode 124: Reward 938.9882659994772
+Epoch 13, timestep 61159
+Car1 Episode 125: Reward 218.96410637456847
+Car2 Episode 125: Reward 223.82780001873792
+Car3 Episode 125: Reward 157.53128287315417
+Epoch 13, timestep 61659
+Car1 Episode 126: Reward -44.373337894208206
+Car2 Episode 126: Reward 750.9784615786457
+Car3 Episode 126: Reward 128.53409777566827
+Epoch 13, timestep 62159
+Car1 Episode 127: Reward 484.74865971827927
+Car2 Episode 127: Reward 305.56809606371337
+Car3 Episode 127: Reward 190.08537379666902
+Epoch 13, timestep 62659
+Car1 Episode 128: Reward 730.394651336188
+Car2 Episode 128: Reward 537.5713507781018
+Car3 Episode 128: Reward 924.5723793136526
+Epoch 13, timestep 63050
+Car1 Episode 129: Reward 314.1052493100795
+Car2 Episode 129: Reward 397.9508231511618
+Car3 Episode 129: Reward 342.0459957208782
+Epoch 13, timestep 63550
+Car1 Episode 130: Reward 143.26334866779905
+Car2 Episode 130: Reward 277.773281470215
+Car3 Episode 130: Reward 185.38769294691062
+Epoch 13, timestep 64050
+Car1 Episode 131: Reward -11.777718612057008
+Car2 Episode 131: Reward 646.3468339272009
+Car3 Episode 131: Reward 152.9721120830553
+Epoch 13, timestep 64550
+Car1 Episode 132: Reward 332.298189983052
+Car2 Episode 132: Reward 240.1173763222732
+Car3 Episode 132: Reward 272.1607282370658
+Epoch 13, timestep 65050
+Car1 Episode 133: Reward 256.0639659103442
+Car2 Episode 133: Reward 90.82013410404558
+Car3 Episode 133: Reward 309.5177347603325
+Epoch 14, timestep 65550
+Car1 Episode 134: Reward 645.9457567450437
+Car2 Episode 134: Reward 539.7065796223374
+Car3 Episode 134: Reward 346.8054126697005
+Epoch 14, timestep 66050
+Car1 Episode 135: Reward 480.40432400634086
+Car2 Episode 135: Reward 117.64521928618846
+Car3 Episode 135: Reward 294.4814808479188
+Epoch 14, timestep 66550
+Car1 Episode 136: Reward 468.88630840125836
+Car2 Episode 136: Reward 413.7516183639957
+Car3 Episode 136: Reward 175.85747083151887
+Epoch 14, timestep 67050
+Car1 Episode 137: Reward 299.895016852132
+Car2 Episode 137: Reward 618.1309327288395
+Car3 Episode 137: Reward 142.05369520368782
+Epoch 14, timestep 67550
+Car1 Episode 138: Reward 753.4042070836359
+Car2 Episode 138: Reward 250.13335565208627
+Car3 Episode 138: Reward 678.9392503767892
+Epoch 14, timestep 68050
+Car1 Episode 139: Reward 621.3625806269971
+Car2 Episode 139: Reward 137.67762701219112
+Car3 Episode 139: Reward 237.310201131002
+Epoch 14, timestep 68550
+Car1 Episode 140: Reward 178.48228009239332
+Car2 Episode 140: Reward 149.95663652954275
+Car3 Episode 140: Reward 239.72986331886014
+Epoch 14, timestep 69050
+Car1 Episode 141: Reward 319.328782375954
+Car2 Episode 141: Reward 178.9085167061448
+Car3 Episode 141: Reward 233.91792445367986
+Epoch 14, timestep 69193
+Car1 Episode 142: Reward 77.97227961995898
+Car2 Episode 142: Reward 146.98665211731995
+Car3 Episode 142: Reward 110.48714053964832
+Epoch 14, timestep 69693
+Car1 Episode 143: Reward 391.52501502287214
+Car2 Episode 143: Reward 555.4224381428495
+Car3 Episode 143: Reward 263.2697943579868
+Epoch 14, timestep 70193
+Car1 Episode 144: Reward 322.5469560912872
+Car2 Episode 144: Reward 424.03839770320445
+Car3 Episode 144: Reward 203.45722225695192
+Epoch 15, timestep 70693
+Car1 Episode 145: Reward 564.1022430293509
+Car2 Episode 145: Reward 240.45160646356965
+Car3 Episode 145: Reward 129.8476891861373
+Epoch 15, timestep 71193
+Car1 Episode 146: Reward 1186.8640457523084
+Car2 Episode 146: Reward 195.43254925307252
+Car3 Episode 146: Reward 208.58489146297347
+Epoch 15, timestep 71693
+Car1 Episode 147: Reward 207.98387812189208
+Car2 Episode 147: Reward 165.23273931724867
+Car3 Episode 147: Reward 204.93910572432094
+Epoch 15, timestep 72193
+Car1 Episode 148: Reward 311.60247365985293
+Car2 Episode 148: Reward 335.40252530914506
+Car3 Episode 148: Reward 276.12097474917533
+Epoch 15, timestep 72693
+Car1 Episode 149: Reward 595.6945632720052
+Car2 Episode 149: Reward 62.961571695512745
+Car3 Episode 149: Reward 150.5228074779863
+Epoch 15, timestep 73193
+Car1 Episode 150: Reward 581.577609468526
+Car2 Episode 150: Reward 270.2919934962324
+Car3 Episode 150: Reward 148.77034468192704
+Epoch 15, timestep 73362
+Car1 Episode 151: Reward 155.85924966770037
+Car2 Episode 151: Reward 69.55146914316964
+Car3 Episode 151: Reward 303.26901617919737
+Epoch 15, timestep 73862
+Car1 Episode 152: Reward 93.21104349649302
+Car2 Episode 152: Reward 143.19291248996836
+Car3 Episode 152: Reward 140.80899848016693
+Epoch 15, timestep 74362
+Car1 Episode 153: Reward 291.9621188073943
+Car2 Episode 153: Reward 382.7968059306093
+Car3 Episode 153: Reward 303.29532710641587
+Epoch 15, timestep 74862
+Car1 Episode 154: Reward 319.13351144450723
+Car2 Episode 154: Reward 242.43028223749954
+Car3 Episode 154: Reward 239.61964956728562
+Epoch 15, timestep 75362
+Car1 Episode 155: Reward 270.7579304360959
+Car2 Episode 155: Reward 23.23375312545933
+Car3 Episode 155: Reward 352.2142614637027
+Epoch 16, timestep 75862
+Car1 Episode 156: Reward 1437.9432110184491
+Car2 Episode 156: Reward 243.78959769287255
+Car3 Episode 156: Reward 210.57695199175552
+Epoch 16, timestep 76362
+Car1 Episode 157: Reward 529.3123466841535
+Car2 Episode 157: Reward 1303.397022803521
+Car3 Episode 157: Reward 981.8530690484506
+Epoch 16, timestep 76862
+Car1 Episode 158: Reward 441.4815082632933
+Car2 Episode 158: Reward 561.9518807760265
+Car3 Episode 158: Reward 544.4420120789815
+Epoch 16, timestep 77362
+Car1 Episode 159: Reward 273.12907618143674
+Car2 Episode 159: Reward 40.814374322852096
+Car3 Episode 159: Reward 205.55364851575905
+Epoch 16, timestep 77862
+Car1 Episode 160: Reward 352.28997146110333
+Car2 Episode 160: Reward 287.0217977267008
+Car3 Episode 160: Reward 165.42337499981255
+Epoch 16, timestep 78362
+Car1 Episode 161: Reward 364.9471522268535
+Car2 Episode 161: Reward 45.3107543139358
+Car3 Episode 161: Reward 149.25560236804424
+Epoch 16, timestep 78862
+Car1 Episode 162: Reward 434.9106531758077
+Car2 Episode 162: Reward 124.46937447868461
+Car3 Episode 162: Reward 346.03225498026694
+Epoch 16, timestep 79362
+Car1 Episode 163: Reward 1390.880763012531
+Car2 Episode 163: Reward 662.9869604983112
+Car3 Episode 163: Reward 188.9554302925719
+Epoch 16, timestep 79862
+Car1 Episode 164: Reward 297.8127794309818
+Car2 Episode 164: Reward 1026.610797343114
+Car3 Episode 164: Reward 579.3724302026596
+Epoch 16, timestep 80362
+Car1 Episode 165: Reward 1298.5010273526038
+Car2 Episode 165: Reward 452.23227798725617
+Car3 Episode 165: Reward 858.5069415720751
+Epoch 17, timestep 80862
+Car1 Episode 166: Reward 1446.5107435344712
+Car2 Episode 166: Reward 623.5576662941844
+Car3 Episode 166: Reward 1218.3852285022404
+Epoch 17, timestep 81362
+Car1 Episode 167: Reward 349.00474189596235
+Car2 Episode 167: Reward 410.30790684448004
+Car3 Episode 167: Reward 125.88321236004458
+Epoch 17, timestep 81862
+Car1 Episode 168: Reward 546.3108605191882
+Car2 Episode 168: Reward 215.51302400181248
+Car3 Episode 168: Reward 578.4831439352785
+Epoch 17, timestep 82362
+Car1 Episode 169: Reward 57.09916564724392
+Car2 Episode 169: Reward 1024.3678464825457
+Car3 Episode 169: Reward 398.09742266091155
+Epoch 17, timestep 82862
+Car1 Episode 170: Reward 710.8985502226008
+Car2 Episode 170: Reward 729.8770754323839
+Car3 Episode 170: Reward 319.60918238174526
+Epoch 17, timestep 83362
+Car1 Episode 171: Reward 344.0183031497209
+Car2 Episode 171: Reward -114.27882584957796
+Car3 Episode 171: Reward 1017.3782088719477
+Epoch 17, timestep 83862
+Car1 Episode 172: Reward 16.821990318358466
+Car2 Episode 172: Reward 173.35640130370052
+Car3 Episode 172: Reward 191.7095432300431
+Epoch 17, timestep 84362
+Car1 Episode 173: Reward 242.00739822409534
+Car2 Episode 173: Reward 647.9414753275439
+Car3 Episode 173: Reward 262.16227956614125
+Epoch 17, timestep 84862
+Car1 Episode 174: Reward 885.0731278432953
+Car2 Episode 174: Reward 1494.229409336433
+Car3 Episode 174: Reward 380.0117487990135
+Epoch 17, timestep 85362
+Car1 Episode 175: Reward 409.6067547683997
+Car2 Episode 175: Reward 79.89008916425038
+Car3 Episode 175: Reward 258.20015248912944
+Epoch 18, timestep 85862
+Car1 Episode 176: Reward 791.7966031973366
+Car2 Episode 176: Reward -106.63337956450253
+Car3 Episode 176: Reward 324.8244849667681
+Epoch 18, timestep 86362
+Car1 Episode 177: Reward -1230.0977733231732
+Car2 Episode 177: Reward 991.8584998884022
+Car3 Episode 177: Reward 219.5418930673336
+Epoch 18, timestep 86862
+Car1 Episode 178: Reward 288.78865226300496
+Car2 Episode 178: Reward 144.26994385185873
+Car3 Episode 178: Reward 196.64236541707734
+Epoch 18, timestep 87256
+Car1 Episode 179: Reward 17.57779006584133
+Car2 Episode 179: Reward 146.43310680149634
+Car3 Episode 179: Reward 121.33150980118626
+Epoch 18, timestep 87756
+Car1 Episode 180: Reward 414.12519287971054
+Car2 Episode 180: Reward 477.0638702929453
+Car3 Episode 180: Reward 1500.6962255687863
+Epoch 18, timestep 88256
+Car1 Episode 181: Reward 441.32254802254874
+Car2 Episode 181: Reward 1536.6040328253455
+Car3 Episode 181: Reward 271.6488820216195
+Epoch 18, timestep 88756
+Car1 Episode 182: Reward 388.5753515561092
+Car2 Episode 182: Reward 606.2968746816866
+Car3 Episode 182: Reward 833.9247930851282
+Epoch 18, timestep 89256
+Car1 Episode 183: Reward 241.81432561489927
+Car2 Episode 183: Reward 1382.84148939327
+Car3 Episode 183: Reward 305.0626319353067
+Epoch 18, timestep 89756
+Car1 Episode 184: Reward 262.08203194853786
+Car2 Episode 184: Reward 228.66190968744112
+Car3 Episode 184: Reward 287.2350173581351
+Epoch 18, timestep 90256
+Car1 Episode 185: Reward 1646.1032982611732
+Car2 Episode 185: Reward 794.3077320846423
+Car3 Episode 185: Reward 974.7818346620007
+Epoch 19, timestep 90756
+Car1 Episode 186: Reward 425.379758898067
+Car2 Episode 186: Reward 387.90335976899655
+Car3 Episode 186: Reward 283.95537069394567
+Epoch 19, timestep 91256
+Car1 Episode 187: Reward 1085.5594845433193
+Car2 Episode 187: Reward 654.0332459363528
+Car3 Episode 187: Reward 668.0815358741248
+Epoch 19, timestep 91756
+Car1 Episode 188: Reward 546.6917220090733
+Car2 Episode 188: Reward 1169.2438231725212
+Car3 Episode 188: Reward 182.6669848220151
+Epoch 19, timestep 92256
+Car1 Episode 189: Reward 185.02125470517987
+Car2 Episode 189: Reward 149.4110152086585
+Car3 Episode 189: Reward 285.47859192371396
+Epoch 19, timestep 92756
+Car1 Episode 190: Reward 1527.9315122278758
+Car2 Episode 190: Reward 1238.5373923767067
+Car3 Episode 190: Reward 258.6986217263472
+Epoch 19, timestep 93256
+Car1 Episode 191: Reward 443.83021579437485
+Car2 Episode 191: Reward 409.72241995391846
+Car3 Episode 191: Reward 205.62091474106546
+Epoch 19, timestep 93756
+Car1 Episode 192: Reward 438.52600727350375
+Car2 Episode 192: Reward 284.44328393452895
+Car3 Episode 192: Reward 403.60161130879857
+Epoch 19, timestep 94256
+Car1 Episode 193: Reward 589.0986529130133
+Car2 Episode 193: Reward 335.4676420927374
+Car3 Episode 193: Reward 326.1504707970939
+Epoch 19, timestep 94756
+Car1 Episode 194: Reward 1582.2528773939346
+Car2 Episode 194: Reward 148.9773882900073
+Car3 Episode 194: Reward 398.9961889729066
+Epoch 19, timestep 95256
+Car1 Episode 195: Reward 1077.1797564093833
+Car2 Episode 195: Reward 94.39767565744893
+Car3 Episode 195: Reward 298.50606825567263
+Epoch 20, timestep 95756
+Car1 Episode 196: Reward 693.6653477247878
+Car2 Episode 196: Reward -82.89733814100629
+Car3 Episode 196: Reward 151.36514803238077
+Epoch 20, timestep 96256
+Car1 Episode 197: Reward 1471.0810916350683
+Car2 Episode 197: Reward 259.43235777328726
+Car3 Episode 197: Reward 252.7234812446136
+Epoch 20, timestep 96756
+Car1 Episode 198: Reward 723.4931592419189
+Car2 Episode 198: Reward 169.36340849983878
+Car3 Episode 198: Reward 267.5302668565307
+Epoch 20, timestep 97256
+Car1 Episode 199: Reward 546.4540795284593
+Car2 Episode 199: Reward 1060.693733517704
+Car3 Episode 199: Reward 232.4292943261532
+Epoch 20, timestep 97756
+Car1 Episode 200: Reward 498.7133072158886
+Car2 Episode 200: Reward 195.8539312289491
+Car3 Episode 200: Reward 353.69134619081655
+Epoch 20, timestep 98256
+Car1 Episode 201: Reward 377.98549754505956
+Car2 Episode 201: Reward 1023.473184585031
+Car3 Episode 201: Reward 302.87983967522547
+Epoch 20, timestep 98756
+Car1 Episode 202: Reward 1286.5198497105785
+Car2 Episode 202: Reward 1257.1465029018857
+Car3 Episode 202: Reward 829.8972145545448
+Epoch 20, timestep 99256
+Car1 Episode 203: Reward 824.8248250530712
+Car2 Episode 203: Reward 183.62475945199878
+Car3 Episode 203: Reward 235.6019509781769
+Epoch 20, timestep 99756
+Car1 Episode 204: Reward 733.167396692872
+Car2 Episode 204: Reward 101.57713833889333
+Car3 Episode 204: Reward 258.6985485784487
+Epoch 20, timestep 100256
+Car1 Episode 205: Reward 407.33713834068726
+Car2 Episode 205: Reward 364.44474588928244
+Car3 Episode 205: Reward 420.69085626336675
+Epoch 21, timestep 100756
+Car1 Episode 206: Reward 1145.732910312273
+Car2 Episode 206: Reward 165.79636683911926
+Car3 Episode 206: Reward 120.71086186735083
+Epoch 21, timestep 101256
+Car1 Episode 207: Reward 694.402339739115
+Car2 Episode 207: Reward 188.8712841259398
+Car3 Episode 207: Reward 286.3458864676227
+Epoch 21, timestep 101756
+Car1 Episode 208: Reward 424.5098810763513
+Car2 Episode 208: Reward 181.49073302251088
+Car3 Episode 208: Reward 302.26041652037605
+Epoch 21, timestep 102256
+Car1 Episode 209: Reward 606.8554891538004
+Car2 Episode 209: Reward 824.0577838291603
+Car3 Episode 209: Reward 223.46180824115964
+Epoch 21, timestep 102756
+Car1 Episode 210: Reward -223.1211122588441
+Car2 Episode 210: Reward 193.86572692927103
+Car3 Episode 210: Reward 275.1528251865024
+Epoch 21, timestep 103256
+Car1 Episode 211: Reward 486.304336515057
+Car2 Episode 211: Reward 228.66173146309836
+Car3 Episode 211: Reward 293.11680199843425
+Epoch 21, timestep 103756
+Car1 Episode 212: Reward 733.0754710130667
+Car2 Episode 212: Reward 147.82108498369902
+Car3 Episode 212: Reward 584.8059503712358
+Epoch 21, timestep 104256
+Car1 Episode 213: Reward 583.9964503242634
+Car2 Episode 213: Reward 905.4110112419658
+Car3 Episode 213: Reward 480.13637916740794
+Epoch 21, timestep 104756
+Car1 Episode 214: Reward 229.5041575561211
+Car2 Episode 214: Reward 82.80531659101979
+Car3 Episode 214: Reward 1109.3507919389006
+Epoch 21, timestep 105256
+Car1 Episode 215: Reward 523.6467778919848
+Car2 Episode 215: Reward 300.20074491843553
+Car3 Episode 215: Reward 1120.8762544579438
+Epoch 22, timestep 105756
+Car1 Episode 216: Reward -115.05747265182946
+Car2 Episode 216: Reward 93.8357101952492
+Car3 Episode 216: Reward 139.01221834654274
+Epoch 22, timestep 106256
+Car1 Episode 217: Reward 37.66831065304254
+Car2 Episode 217: Reward 151.28223062266284
+Car3 Episode 217: Reward 588.7984820858048
+Epoch 22, timestep 106756
+Car1 Episode 218: Reward 287.03996776658965
+Car2 Episode 218: Reward 438.65637867499123
+Car3 Episode 218: Reward 396.7320568353456
+Epoch 22, timestep 107256
+Car1 Episode 219: Reward 1429.4914113293398
+Car2 Episode 219: Reward 247.89042196914704
+Car3 Episode 219: Reward 300.09502079101384
+Epoch 22, timestep 107756
+Car1 Episode 220: Reward 439.1747262058199
+Car2 Episode 220: Reward 1094.5772206343124
+Car3 Episode 220: Reward 140.82155180445693
+Epoch 22, timestep 108256
+Car1 Episode 221: Reward 731.8240798333727
+Car2 Episode 221: Reward 89.0934803542067
+Car3 Episode 221: Reward 362.2042377957583
+Epoch 22, timestep 108756
+Car1 Episode 222: Reward 298.46192093804405
+Car2 Episode 222: Reward 130.66012121197343
+Car3 Episode 222: Reward 437.51781613846475
+Epoch 22, timestep 109256
+Car1 Episode 223: Reward 304.0631186454102
+Car2 Episode 223: Reward 1572.1936356893307
+Car3 Episode 223: Reward 417.3030297975795
+Epoch 22, timestep 109756
+Car1 Episode 224: Reward 682.9354744159411
+Car2 Episode 224: Reward 261.9753777179088
+Car3 Episode 224: Reward 1010.816650055607
+Epoch 22, timestep 110256
+Car1 Episode 225: Reward 1287.761185233535
+Car2 Episode 225: Reward 93.70217523176763
+Car3 Episode 225: Reward 224.78893450510873
+Epoch 23, timestep 110756
+Car1 Episode 226: Reward 352.52930288020724
+Car2 Episode 226: Reward 158.34121525578047
+Car3 Episode 226: Reward 382.1298143946236
+Epoch 23, timestep 111256
+Car1 Episode 227: Reward 326.68217944404097
+Car2 Episode 227: Reward 279.3651920845971
+Car3 Episode 227: Reward 193.46824318809712
+Epoch 23, timestep 111756
+Car1 Episode 228: Reward 636.2925421262865
+Car2 Episode 228: Reward 248.77375952191366
+Car3 Episode 228: Reward 20.36491932925999
+Epoch 23, timestep 112202
+Car1 Episode 229: Reward 133.15165459331268
+Car2 Episode 229: Reward 503.2744398193908
+Car3 Episode 229: Reward 560.6861545512244
+Epoch 23, timestep 112702
+Car1 Episode 230: Reward 323.32404079902574
+Car2 Episode 230: Reward 192.37038259561476
+Car3 Episode 230: Reward 250.12930090022238
+Epoch 23, timestep 113202
+Car1 Episode 231: Reward 320.7711624881094
+Car2 Episode 231: Reward 340.9060011386098
+Car3 Episode 231: Reward 367.1644120942562
+Epoch 23, timestep 113702
+Car1 Episode 232: Reward 802.8340450546536
+Car2 Episode 232: Reward 461.6155615673383
+Car3 Episode 232: Reward 285.18524020933125
+Epoch 23, timestep 114202
+Car1 Episode 233: Reward 115.26347725927114
+Car2 Episode 233: Reward 251.94805630592546
+Car3 Episode 233: Reward 272.4188287082287
+Epoch 23, timestep 114702
+Car1 Episode 234: Reward 571.6709417136353
+Car2 Episode 234: Reward 892.1262391104751
+Car3 Episode 234: Reward 389.1560042652936
+Epoch 23, timestep 115202
+Car1 Episode 235: Reward 387.95797419144617
+Car2 Episode 235: Reward 1066.8387803068385
+Car3 Episode 235: Reward 251.02548706558082
+Epoch 24, timestep 115702
+Car1 Episode 236: Reward 1606.1941061310295
+Car2 Episode 236: Reward 199.92422289393457
+Car3 Episode 236: Reward 406.43814935164835
+Epoch 24, timestep 116202
+Car1 Episode 237: Reward 1427.0306538358184
+Car2 Episode 237: Reward 114.36098632719666
+Car3 Episode 237: Reward 207.4351876017267
+Epoch 24, timestep 116702
+Car1 Episode 238: Reward 456.4099423627055
+Car2 Episode 238: Reward 171.80209083346156
+Car3 Episode 238: Reward 195.84580710057978
+Epoch 24, timestep 117202
+Car1 Episode 239: Reward 912.8244533244931
+Car2 Episode 239: Reward 395.8319360526189
+Car3 Episode 239: Reward 34.21486800090519
+Epoch 24, timestep 117702
+Car1 Episode 240: Reward 238.29625551967405
+Car2 Episode 240: Reward 11.890286983162953
+Car3 Episode 240: Reward 302.66916541397586
+Epoch 24, timestep 118202
+Car1 Episode 241: Reward 853.7903359385194
+Car2 Episode 241: Reward -19.572472026968594
+Car3 Episode 241: Reward 271.455528107369
+Epoch 24, timestep 118702
+Car1 Episode 242: Reward 548.0518081715944
+Car2 Episode 242: Reward 558.0921445709577
+Car3 Episode 242: Reward 808.384551391183
+Epoch 24, timestep 119202
+Car1 Episode 243: Reward 761.3059048834987
+Car2 Episode 243: Reward 116.65005597614639
+Car3 Episode 243: Reward 222.97365556496192
+Epoch 24, timestep 119702
+Car1 Episode 244: Reward 531.5001636965525
+Car2 Episode 244: Reward 28.893624156644695
+Car3 Episode 244: Reward 171.20284359901603
+Epoch 24, timestep 120202
+Car1 Episode 245: Reward 560.0430255286398
+Car2 Episode 245: Reward 312.4497816659845
+Car3 Episode 245: Reward 78.44289675868517
+Epoch 25, timestep 120702
+Car1 Episode 246: Reward 541.227034160643
+Car2 Episode 246: Reward 366.1752431955676
+Car3 Episode 246: Reward 439.53948189753305
+Epoch 25, timestep 121202
+Car1 Episode 247: Reward 482.1481557296165
+Car2 Episode 247: Reward -26.04293818671752
+Car3 Episode 247: Reward 262.3731554404861
+Epoch 25, timestep 121702
+Car1 Episode 248: Reward -112.05612096989707
+Car2 Episode 248: Reward 445.20102848556087
+Car3 Episode 248: Reward 951.9017978808519
+Epoch 25, timestep 122202
+Car1 Episode 249: Reward 1629.4144566825307
+Car2 Episode 249: Reward 761.5157721131723
+Car3 Episode 249: Reward 327.60563505772285
+Epoch 25, timestep 122702
+Car1 Episode 250: Reward 68.15320324490996
+Car2 Episode 250: Reward 572.2814368046521
+Car3 Episode 250: Reward 347.7180694964958
+Epoch 25, timestep 123202
+Car1 Episode 251: Reward 814.5350275877713
+Car2 Episode 251: Reward 338.9057325644526
+Car3 Episode 251: Reward 257.9769109028983
+Epoch 25, timestep 123702
+Car1 Episode 252: Reward 406.70907492384976
+Car2 Episode 252: Reward 322.34848973043813
+Car3 Episode 252: Reward 353.733301576843
+Epoch 25, timestep 124202
+Car1 Episode 253: Reward 1384.6812118891103
+Car2 Episode 253: Reward 240.85797030484082
+Car3 Episode 253: Reward 461.3956200801656
+Epoch 25, timestep 124702
+Car1 Episode 254: Reward 689.763574157752
+Car2 Episode 254: Reward 154.99749078047904
+Car3 Episode 254: Reward 822.764091851535
+Epoch 25, timestep 125202
+Car1 Episode 255: Reward 975.332290156994
+Car2 Episode 255: Reward 201.90572011915174
+Car3 Episode 255: Reward 49.61024815898186
+Epoch 26, timestep 125702
+Car1 Episode 256: Reward 856.3591065390251
+Car2 Episode 256: Reward 470.85684040458636
+Car3 Episode 256: Reward 402.5718341276255
+Epoch 26, timestep 126202
+Car1 Episode 257: Reward 112.42377478906863
+Car2 Episode 257: Reward 181.89244080210912
+Car3 Episode 257: Reward -26.58349772166928
+Epoch 26, timestep 126702
+Car1 Episode 258: Reward 290.49913776529627
+Car2 Episode 258: Reward 133.6105851249441
+Car3 Episode 258: Reward 119.12846552211593
+Epoch 26, timestep 127202
+Car1 Episode 259: Reward 410.2677302519863
+Car2 Episode 259: Reward 381.57771399266545
+Car3 Episode 259: Reward 179.0504857088607
+Epoch 26, timestep 127702
+Car1 Episode 260: Reward 253.7501782741809
+Car2 Episode 260: Reward 137.33971671324977
+Car3 Episode 260: Reward 191.68687005486953
+Epoch 26, timestep 128202
+Car1 Episode 261: Reward 1035.3928260729601
+Car2 Episode 261: Reward 293.03521877494836
+Car3 Episode 261: Reward 122.77756739583383
+Epoch 26, timestep 128702
+Car1 Episode 262: Reward 173.6839537126839
+Car2 Episode 262: Reward 622.2296847994861
+Car3 Episode 262: Reward 227.24228890010852
+Epoch 26, timestep 129202
+Car1 Episode 263: Reward 39.09040913147714
+Car2 Episode 263: Reward 345.8666990213348
+Car3 Episode 263: Reward 122.72003473902414
+Epoch 26, timestep 129446
+Car1 Episode 264: Reward 343.20558614033797
+Car2 Episode 264: Reward 148.3933070041149
+Car3 Episode 264: Reward 161.56234381767914
+Epoch 26, timestep 129946
+Car1 Episode 265: Reward 177.252492376048
+Car2 Episode 265: Reward 291.5236698712527
+Car3 Episode 265: Reward 603.5950422542627
+Epoch 26, timestep 130446
+Car1 Episode 266: Reward 473.3379504635073
+Car2 Episode 266: Reward 159.17808572245542
+Car3 Episode 266: Reward 167.45228075039066
+Epoch 27, timestep 130946
+Car1 Episode 267: Reward 274.20092962297423
+Car2 Episode 267: Reward 174.78145692190202
+Car3 Episode 267: Reward 273.1604620738688
+Epoch 27, timestep 131446
+Car1 Episode 268: Reward 2022.5732860922933
+Car2 Episode 268: Reward 311.79535239926724
+Car3 Episode 268: Reward 427.4227211763977
+Epoch 27, timestep 131946
+Car1 Episode 269: Reward 243.93334158917176
+Car2 Episode 269: Reward 199.10612529974682
+Car3 Episode 269: Reward 35.00269216556842
+Epoch 27, timestep 132446
+Car1 Episode 270: Reward 177.26628642244367
+Car2 Episode 270: Reward 978.0827837915385
+Car3 Episode 270: Reward 250.5897067177618
+Epoch 27, timestep 132946
+Car1 Episode 271: Reward 363.9209846369253
+Car2 Episode 271: Reward 164.47944889662227
+Car3 Episode 271: Reward 239.63668181103003
+Epoch 27, timestep 133446
+Car1 Episode 272: Reward 179.70889939639696
+Car2 Episode 272: Reward 133.9002649240858
+Car3 Episode 272: Reward 448.7418831016394
+Epoch 27, timestep 133946
+Car1 Episode 273: Reward 1143.273651109486
+Car2 Episode 273: Reward 276.2023926568876
+Car3 Episode 273: Reward 235.5577526438888
+Epoch 27, timestep 134446
+Car1 Episode 274: Reward 218.84465701098077
+Car2 Episode 274: Reward 1170.2092941139915
+Car3 Episode 274: Reward 183.71854322960075
+Epoch 27, timestep 134946
+Car1 Episode 275: Reward 1165.102061185928
+Car2 Episode 275: Reward 351.6211144528836
+Car3 Episode 275: Reward 298.2280680193606
+Epoch 27, timestep 135446
+Car1 Episode 276: Reward 702.6563334311542
+Car2 Episode 276: Reward 599.4502162442952
+Car3 Episode 276: Reward 248.71870826606863
+Epoch 28, timestep 135946
+Car1 Episode 277: Reward 720.4986513688721
+Car2 Episode 277: Reward 980.8271919790774
+Car3 Episode 277: Reward 177.76302015146314
+Epoch 28, timestep 136446
+Car1 Episode 278: Reward 730.5313318794086
+Car2 Episode 278: Reward 122.8986687067808
+Car3 Episode 278: Reward 140.14663502725432
+Epoch 28, timestep 136946
+Car1 Episode 279: Reward 1206.5129765145657
+Car2 Episode 279: Reward 693.6407125322673
+Car3 Episode 279: Reward 312.8264071076921
+Epoch 28, timestep 137446
+Car1 Episode 280: Reward 553.4053141166769
+Car2 Episode 280: Reward 61.68417750228157
+Car3 Episode 280: Reward 174.92745279310603
+Epoch 28, timestep 137946
+Car1 Episode 281: Reward 689.1144547353356
+Car2 Episode 281: Reward 194.61583414538973
+Car3 Episode 281: Reward 277.9906807255879
+Epoch 28, timestep 138446
+Car1 Episode 282: Reward 705.024657865732
+Car2 Episode 282: Reward 162.66253837639684
+Car3 Episode 282: Reward 118.26715347487946
+Epoch 28, timestep 138946
+Car1 Episode 283: Reward 136.01087246318295
+Car2 Episode 283: Reward 424.3760136819216
+Car3 Episode 283: Reward 308.44146028002854
+Epoch 28, timestep 139446
+Car1 Episode 284: Reward 1548.7600444474153
+Car2 Episode 284: Reward 480.42673863705255
+Car3 Episode 284: Reward 275.98827502110026
+Epoch 28, timestep 139946
+Car1 Episode 285: Reward 573.1473199991351
+Car2 Episode 285: Reward 870.450187783272
+Car3 Episode 285: Reward 204.70740664874518
+Epoch 28, timestep 140314
+Car1 Episode 286: Reward 191.26584312236176
+Car2 Episode 286: Reward 173.2985313667442
+Car3 Episode 286: Reward 257.60927910130147
+Epoch 29, timestep 140814
+Car1 Episode 287: Reward 219.79702698378222
+Car2 Episode 287: Reward 363.7158994322749
+Car3 Episode 287: Reward 123.82635574106787
+Epoch 29, timestep 141314
+Car1 Episode 288: Reward 1385.3944359230652
+Car2 Episode 288: Reward 137.63741698587094
+Car3 Episode 288: Reward 101.92611745390865
+Epoch 29, timestep 141814
+Car1 Episode 289: Reward 489.5304499137193
+Car2 Episode 289: Reward 48.54711797359262
+Car3 Episode 289: Reward 112.98156814195004
+Epoch 29, timestep 142314
+Car1 Episode 290: Reward 1357.0583051324838
+Car2 Episode 290: Reward 1143.2175868979984
+Car3 Episode 290: Reward 211.04534997149048
+Epoch 29, timestep 142814
+Car1 Episode 291: Reward -76.40245767645152
+Car2 Episode 291: Reward 333.18610949767765
+Car3 Episode 291: Reward 186.33796631741637
+Epoch 29, timestep 143314
+Car1 Episode 292: Reward 495.2499946816472
+Car2 Episode 292: Reward 359.575322568762
+Car3 Episode 292: Reward 1063.9264597842769
+Epoch 29, timestep 143814
+Car1 Episode 293: Reward 1336.0255103361746
+Car2 Episode 293: Reward 138.1637214621527
+Car3 Episode 293: Reward 260.551711486527
+Epoch 29, timestep 144314
+Car1 Episode 294: Reward 802.0032961151754
+Car2 Episode 294: Reward 337.64339019799195
+Car3 Episode 294: Reward 348.08103249804935
+Epoch 29, timestep 144814
+Car1 Episode 295: Reward -43.10744151945557
+Car2 Episode 295: Reward 1020.314846273689
+Car3 Episode 295: Reward 184.86849859787893
+Epoch 29, timestep 145314
+Car1 Episode 296: Reward 14.235276466926827
+Car2 Episode 296: Reward 196.97887738329993
+Car3 Episode 296: Reward 727.4878807143584
+Epoch 30, timestep 145668
+Car1 Episode 297: Reward 22.539447033699698
+Car2 Episode 297: Reward 328.9948527518202
+Car3 Episode 297: Reward 138.58188717350288
+Epoch 30, timestep 146168
+Car1 Episode 298: Reward 275.22505166291927
+Car2 Episode 298: Reward 542.847810311146
+Car3 Episode 298: Reward 404.4066762540482
+Epoch 30, timestep 146668
+Car1 Episode 299: Reward 84.57228383402314
+Car2 Episode 299: Reward 106.03494078768117
+Car3 Episode 299: Reward 43.58093248737793
+Epoch 30, timestep 147168
+Car1 Episode 300: Reward 192.59778767369463
+Car2 Episode 300: Reward 95.40202838627327
+Car3 Episode 300: Reward 254.28223356505265
+Epoch 30, timestep 147668
+Car1 Episode 301: Reward 597.8404469454209
+Car2 Episode 301: Reward 513.5071275336265
+Car3 Episode 301: Reward 226.59425119841046
+Epoch 30, timestep 148168
+Car1 Episode 302: Reward 180.67322276554722
+Car2 Episode 302: Reward 72.9129096138989
+Car3 Episode 302: Reward 175.42336968105388
+Epoch 30, timestep 148668
+Car1 Episode 303: Reward 956.5053055092376
+Car2 Episode 303: Reward 247.6695947285603
+Car3 Episode 303: Reward 196.21834937905894
+Epoch 30, timestep 149168
+Car1 Episode 304: Reward 413.78121813986627
+Car2 Episode 304: Reward 1525.6780426094233
+Car3 Episode 304: Reward 269.0979784673758
+Epoch 30, timestep 149668
+Car1 Episode 305: Reward 338.2678147695406
+Car2 Episode 305: Reward -77.8410293096708
+Car3 Episode 305: Reward 210.56376988043732
+Epoch 30, timestep 150168
+Car1 Episode 306: Reward 438.47815211664977
+Car2 Episode 306: Reward 412.70230442814966
+Car3 Episode 306: Reward 260.852744909796
+Epoch 31, timestep 150668
+Car1 Episode 307: Reward 775.1311654042951
+Car2 Episode 307: Reward 471.84189815213296
+Car3 Episode 307: Reward 297.65030362074606
+Epoch 31, timestep 151168
+Car1 Episode 308: Reward 659.4360209374163
+Car2 Episode 308: Reward 320.79944347059495
+Car3 Episode 308: Reward 337.5585017300983
+Epoch 31, timestep 151668
+Car1 Episode 309: Reward 359.02953073231987
+Car2 Episode 309: Reward 1114.5649999261334
+Car3 Episode 309: Reward 255.8115368543654
+Epoch 31, timestep 152168
+Car1 Episode 310: Reward 348.3100500882499
+Car2 Episode 310: Reward 169.6589434411109
+Car3 Episode 310: Reward 101.95956332503282
+Epoch 31, timestep 152668
+Car1 Episode 311: Reward 377.56241863807384
+Car2 Episode 311: Reward 938.3714143015814
+Car3 Episode 311: Reward 321.9890323836207
+Epoch 31, timestep 153168
+Car1 Episode 312: Reward 319.1425885127636
+Car2 Episode 312: Reward 166.72511338993104
+Car3 Episode 312: Reward 302.01115110679456
+Epoch 31, timestep 153668
+Car1 Episode 313: Reward 627.5184215705895
+Car2 Episode 313: Reward 70.00181923170466
+Car3 Episode 313: Reward 350.2567654181315
+Epoch 31, timestep 154168
+Car1 Episode 314: Reward 667.4282546481942
+Car2 Episode 314: Reward 215.01216076672165
+Car3 Episode 314: Reward 152.23322983689835
+Epoch 31, timestep 154668
+Car1 Episode 315: Reward 541.3878102002533
+Car2 Episode 315: Reward 292.7728714374837
+Car3 Episode 315: Reward 317.7261308665225
+Epoch 31, timestep 155168
+Car1 Episode 316: Reward 1415.6188888467968
+Car2 Episode 316: Reward 366.499194780038
+Car3 Episode 316: Reward 321.09894667123353
+Epoch 32, timestep 155668
+Car1 Episode 317: Reward 1321.1577831068203
+Car2 Episode 317: Reward -81.36280060664141
+Car3 Episode 317: Reward 198.14042539107274
+Epoch 32, timestep 156168
+Car1 Episode 318: Reward 463.3868960675971
+Car2 Episode 318: Reward 229.99438089468765
+Car3 Episode 318: Reward 237.43424759150523
+Epoch 32, timestep 156432
+Car1 Episode 319: Reward 276.0728927091131
+Car2 Episode 319: Reward -0.4294803478301893
+Car3 Episode 319: Reward 356.40395239863193
+Epoch 32, timestep 156932
+Car1 Episode 320: Reward -48.87280013228101
+Car2 Episode 320: Reward 309.571813741914
+Car3 Episode 320: Reward 779.149402013633
+Epoch 32, timestep 157432
+Car1 Episode 321: Reward 757.9981276117082
+Car2 Episode 321: Reward 210.06231179335506
+Car3 Episode 321: Reward 233.3814268972157
+Epoch 32, timestep 157932
+Car1 Episode 322: Reward 331.09533205237716
+Car2 Episode 322: Reward 508.378527846235
+Car3 Episode 322: Reward 466.4441712414568
+Epoch 32, timestep 158432
+Car1 Episode 323: Reward 439.8272549202533
+Car2 Episode 323: Reward 527.3418505610022
+Car3 Episode 323: Reward 197.02744336683213
+Epoch 32, timestep 158932
+Car1 Episode 324: Reward 40.71269378124465
+Car2 Episode 324: Reward 1239.3047816394887
+Car3 Episode 324: Reward 319.1840451462969
+Epoch 32, timestep 159432
+Car1 Episode 325: Reward 489.03800192484056
+Car2 Episode 325: Reward 768.2757120568016
+Car3 Episode 325: Reward 382.61785403585185
+Epoch 32, timestep 159932
+Car1 Episode 326: Reward 514.2856558541558
+Car2 Episode 326: Reward 437.90259251629595
+Car3 Episode 326: Reward 261.8866996168969
+Epoch 32, timestep 160432
+Car1 Episode 327: Reward 49.561832007377724
+Car2 Episode 327: Reward 619.6206948761246
+Car3 Episode 327: Reward 237.45648344856426
+Epoch 33, timestep 160932
+Car1 Episode 328: Reward 158.65520665580007
+Car2 Episode 328: Reward 767.5561584761688
+Car3 Episode 328: Reward 248.76026014690905
+Epoch 33, timestep 161432
+Car1 Episode 329: Reward 629.6752893192671
+Car2 Episode 329: Reward 701.939889594663
+Car3 Episode 329: Reward 338.3146411364823
+Epoch 33, timestep 161932
+Car1 Episode 330: Reward 541.885012764148
+Car2 Episode 330: Reward 414.9170301600897
+Car3 Episode 330: Reward 326.2494384749136
+Epoch 33, timestep 162432
+Car1 Episode 331: Reward -1210.2181568771368
+Car2 Episode 331: Reward 295.61379243231227
+Car3 Episode 331: Reward 246.73309104496596
+Epoch 33, timestep 162932
+Car1 Episode 332: Reward -149.86253834119336
+Car2 Episode 332: Reward 1133.779204449818
+Car3 Episode 332: Reward 118.23357829632106
+Epoch 33, timestep 163432
+Car1 Episode 333: Reward 569.6160389809586
+Car2 Episode 333: Reward 195.92701091988658
+Car3 Episode 333: Reward 244.80161701738672
+Epoch 33, timestep 163932
+Car1 Episode 334: Reward 498.5063800779606
+Car2 Episode 334: Reward 298.1680004860542
+Car3 Episode 334: Reward 295.67517492041804
+Epoch 33, timestep 164432
+Car1 Episode 335: Reward 528.0304506751289
+Car2 Episode 335: Reward 570.4542455964927
+Car3 Episode 335: Reward 197.41894154375106
+Epoch 33, timestep 164932
+Car1 Episode 336: Reward 794.5519646829766
+Car2 Episode 336: Reward 685.5086214572252
+Car3 Episode 336: Reward 141.86460256446225
+Epoch 33, timestep 165432
+Car1 Episode 337: Reward 1629.7220595849346
+Car2 Episode 337: Reward 941.3827549775259
+Car3 Episode 337: Reward 419.5273406343343
+Epoch 34, timestep 165932
+Car1 Episode 338: Reward 324.3411439505158
+Car2 Episode 338: Reward 1196.795431272487
+Car3 Episode 338: Reward 209.28615400281024
+Epoch 34, timestep 166432
+Car1 Episode 339: Reward 744.2615809093058
+Car2 Episode 339: Reward 221.9849669191095
+Car3 Episode 339: Reward 359.3309547385157
+Epoch 34, timestep 166932
+Car1 Episode 340: Reward 900.7745269542974
+Car2 Episode 340: Reward 955.6429410393214
+Car3 Episode 340: Reward 97.77422797085728
+Epoch 34, timestep 167432
+Car1 Episode 341: Reward 567.1952687018578
+Car2 Episode 341: Reward 166.39527030245554
+Car3 Episode 341: Reward 253.5921673127131
+Epoch 34, timestep 167932
+Car1 Episode 342: Reward 182.92341685707768
+Car2 Episode 342: Reward 615.0868269120795
+Car3 Episode 342: Reward 313.9681854061464
+Epoch 34, timestep 168432
+Car1 Episode 343: Reward 218.11555130270708
+Car2 Episode 343: Reward 191.62434931725522
+Car3 Episode 343: Reward 55.08680398451261
+Epoch 34, timestep 168932
+Car1 Episode 344: Reward 871.281488087255
+Car2 Episode 344: Reward 230.33637212980906
+Car3 Episode 344: Reward 382.60215760509317
+Epoch 34, timestep 169432
+Car1 Episode 345: Reward 1489.395497551875
+Car2 Episode 345: Reward 1184.2708460796273
+Car3 Episode 345: Reward 316.9471099070328
+Epoch 34, timestep 169932
+Car1 Episode 346: Reward 175.1690312834115
+Car2 Episode 346: Reward 229.9125910609562
+Car3 Episode 346: Reward 261.43994986243587
+Epoch 34, timestep 170432
+Car1 Episode 347: Reward 1941.0946700805146
+Car2 Episode 347: Reward 258.2173272046859
+Car3 Episode 347: Reward 493.7931078000546
+Epoch 35, timestep 170932
+Car1 Episode 348: Reward 1334.2632375634082
+Car2 Episode 348: Reward 417.3853606122249
+Car3 Episode 348: Reward 308.79714857826406
+Epoch 35, timestep 171432
+Car1 Episode 349: Reward 432.4824928567983
+Car2 Episode 349: Reward 480.7718705902351
+Car3 Episode 349: Reward 316.8175816570677
+Epoch 35, timestep 171932
+Car1 Episode 350: Reward 736.0081665791739
+Car2 Episode 350: Reward 154.33301570861803
+Car3 Episode 350: Reward 205.16261575619615
+Epoch 35, timestep 172432
+Car1 Episode 351: Reward 524.4462462899941
+Car2 Episode 351: Reward 1399.1977532286417
+Car3 Episode 351: Reward -62.175098182824925
+Epoch 35, timestep 172932
+Car1 Episode 352: Reward 395.0583556705088
+Car2 Episode 352: Reward 893.3420564922975
+Car3 Episode 352: Reward 223.0192240197856
+Epoch 35, timestep 173432
+Car1 Episode 353: Reward 163.88804605326246
+Car2 Episode 353: Reward 530.5812883492005
+Car3 Episode 353: Reward 246.8257617945209
+Epoch 35, timestep 173932
+Car1 Episode 354: Reward 945.6009889429985
+Car2 Episode 354: Reward 193.3215663224957
+Car3 Episode 354: Reward 122.52782274996277
+Epoch 35, timestep 174432
+Car1 Episode 355: Reward 428.88541885204756
+Car2 Episode 355: Reward 456.71263060238795
+Car3 Episode 355: Reward -92.90360073965373
+Epoch 35, timestep 174932
+Car1 Episode 356: Reward 760.2767219631236
+Car2 Episode 356: Reward 226.51635286226542
+Car3 Episode 356: Reward 117.64328442435074
+Epoch 35, timestep 175432
+Car1 Episode 357: Reward 1036.0211730386281
+Car2 Episode 357: Reward 290.31606210994624
+Car3 Episode 357: Reward 106.28130116287797
+Epoch 36, timestep 175932
+Car1 Episode 358: Reward 470.57707915669096
+Car2 Episode 358: Reward 144.11387216021643
+Car3 Episode 358: Reward 329.45066887004504
+Epoch 36, timestep 176432
+Car1 Episode 359: Reward 1618.1363433481413
+Car2 Episode 359: Reward 593.7189304350189
+Car3 Episode 359: Reward 155.71009748268665
+Epoch 36, timestep 176932
+Car1 Episode 360: Reward 499.69046680538565
+Car2 Episode 360: Reward 1194.9729558063552
+Car3 Episode 360: Reward 153.15448707877422
+Epoch 36, timestep 177432
+Car1 Episode 361: Reward 885.9156821154558
+Car2 Episode 361: Reward 280.2148832086577
+Car3 Episode 361: Reward 69.91100815209371
+Epoch 36, timestep 177932
+Car1 Episode 362: Reward 457.5073921081891
+Car2 Episode 362: Reward 94.36901020826319
+Car3 Episode 362: Reward -109.01459267612961
+Epoch 36, timestep 178432
+Car1 Episode 363: Reward -832.0145702664609
+Car2 Episode 363: Reward 213.90124524051984
+Car3 Episode 363: Reward 1019.5747095810044
+Epoch 36, timestep 178932
+Car1 Episode 364: Reward 142.6634448777921
+Car2 Episode 364: Reward 309.58691084276376
+Car3 Episode 364: Reward 269.1814154268
+Epoch 36, timestep 179432
+Car1 Episode 365: Reward 932.478861720906
+Car2 Episode 365: Reward 168.7492787862264
+Car3 Episode 365: Reward 660.4467257793859
+Epoch 36, timestep 179932
+Car1 Episode 366: Reward 1103.3353848331908
+Car2 Episode 366: Reward 65.18632536183998
+Car3 Episode 366: Reward 223.48749964531663
+Epoch 36, timestep 180432
+Car1 Episode 367: Reward 1177.5432403631505
+Car2 Episode 367: Reward 462.8744198379289
+Car3 Episode 367: Reward 315.3996257036978
+Epoch 37, timestep 180867
+Car1 Episode 368: Reward 100.16933589479957
+Car2 Episode 368: Reward 248.444887807275
+Car3 Episode 368: Reward 244.67397620671005
+Epoch 37, timestep 181367
+Car1 Episode 369: Reward 546.7466721822592
+Car2 Episode 369: Reward 1025.2831967000213
+Car3 Episode 369: Reward 360.22896625819504
+Epoch 37, timestep 181867
+Car1 Episode 370: Reward 1697.3018004346661
+Car2 Episode 370: Reward 314.7098597898803
+Car3 Episode 370: Reward 394.1297252864276
+Epoch 37, timestep 182367
+Car1 Episode 371: Reward 1424.9477710475385
+Car2 Episode 371: Reward 1323.393850945066
+Car3 Episode 371: Reward 142.259396402347
+Epoch 37, timestep 182867
+Car1 Episode 372: Reward 528.4735042148856
+Car2 Episode 372: Reward 396.52905821104406
+Car3 Episode 372: Reward 284.57079765566203
+Epoch 37, timestep 183367
+Car1 Episode 373: Reward 241.40448609360365
+Car2 Episode 373: Reward -765.2344220903876
+Car3 Episode 373: Reward 238.48583547897698
+Epoch 37, timestep 183867
+Car1 Episode 374: Reward 688.6408195534874
+Car2 Episode 374: Reward 345.63056278268994
+Car3 Episode 374: Reward 284.34570801037995
+Epoch 37, timestep 184367
+Car1 Episode 375: Reward 127.86422445102605
+Car2 Episode 375: Reward -4.244372228427446
+Car3 Episode 375: Reward 299.1734194031397
+Epoch 37, timestep 184867
+Car1 Episode 376: Reward 1485.2331767058845
+Car2 Episode 376: Reward 660.0880501995872
+Car3 Episode 376: Reward 309.76702178270756
+Epoch 37, timestep 185367
+Car1 Episode 377: Reward 682.8584180336313
+Car2 Episode 377: Reward 284.95683766513366
+Car3 Episode 377: Reward 420.89851378129225
+Epoch 38, timestep 185867
+Car1 Episode 378: Reward 1561.2684690968724
+Car2 Episode 378: Reward 466.7092726437826
+Car3 Episode 378: Reward 276.5893397579204
+Epoch 38, timestep 186367
+Car1 Episode 379: Reward 178.82758782771737
+Car2 Episode 379: Reward 1104.8531813650254
+Car3 Episode 379: Reward 245.98517978774524
+Epoch 38, timestep 186867
+Car1 Episode 380: Reward 825.2276967553322
+Car2 Episode 380: Reward 786.1549130161665
+Car3 Episode 380: Reward 296.3587056549345
+Epoch 38, timestep 187367
+Car1 Episode 381: Reward 678.2945275059756
+Car2 Episode 381: Reward 350.77386747655044
+Car3 Episode 381: Reward 168.13708670385236
+Epoch 38, timestep 187867
+Car1 Episode 382: Reward 399.98368143283966
+Car2 Episode 382: Reward 245.89296975349606
+Car3 Episode 382: Reward 172.30189319854
+Epoch 38, timestep 188367
+Car1 Episode 383: Reward 865.7145984296013
+Car2 Episode 383: Reward 372.197801101899
+Car3 Episode 383: Reward 1006.6185176270445
+Epoch 38, timestep 188867
+Car1 Episode 384: Reward 324.94841389614345
+Car2 Episode 384: Reward 156.90024259756862
+Car3 Episode 384: Reward 134.91104161864175
+Epoch 38, timestep 189367
+Car1 Episode 385: Reward 2130.0261812848153
+Car2 Episode 385: Reward 470.72190474832206
+Car3 Episode 385: Reward 1365.998131880073
+Epoch 38, timestep 189867
+Car1 Episode 386: Reward 624.3953174855274
+Car2 Episode 386: Reward 199.01238144919276
+Car3 Episode 386: Reward 112.20944649119747
+Epoch 38, timestep 190367
+Car1 Episode 387: Reward 1924.0488073651143
+Car2 Episode 387: Reward 311.54355180369623
+Car3 Episode 387: Reward -250.0044390916539
+Epoch 39, timestep 190867
+Car1 Episode 388: Reward 1086.2105901457976
+Car2 Episode 388: Reward -27.20066383195907
+Car3 Episode 388: Reward 1039.181473215122
+Epoch 39, timestep 191367
+Car1 Episode 389: Reward 785.7636566027537
+Car2 Episode 389: Reward 1029.688656053968
+Car3 Episode 389: Reward 1127.2635138573262
+Epoch 39, timestep 191867
+Car1 Episode 390: Reward 472.86453110644896
+Car2 Episode 390: Reward 449.50920035813226
+Car3 Episode 390: Reward 636.099785964776
+Epoch 39, timestep 192367
+Car1 Episode 391: Reward 455.39239756372257
+Car2 Episode 391: Reward 375.8075157563482
+Car3 Episode 391: Reward 322.38596863094375
+Epoch 39, timestep 192867
+Car1 Episode 392: Reward 1632.2405004239781
+Car2 Episode 392: Reward 210.81071214958826
+Car3 Episode 392: Reward 250.0168132447629
+Epoch 39, timestep 193367
+Car1 Episode 393: Reward 395.9448641777713
+Car2 Episode 393: Reward 185.23142643370554
+Car3 Episode 393: Reward 206.96465342384747
+Epoch 39, timestep 193867
+Car1 Episode 394: Reward 1556.3632283635075
+Car2 Episode 394: Reward 229.11544641698256
+Car3 Episode 394: Reward 326.16122596964266
+Epoch 39, timestep 194367
+Car1 Episode 395: Reward 898.8565361566568
+Car2 Episode 395: Reward 168.5778127382157
+Car3 Episode 395: Reward 181.06670192037964
+Epoch 39, timestep 194867
+Car1 Episode 396: Reward 842.6624576573428
+Car2 Episode 396: Reward 769.6377522079817
+Car3 Episode 396: Reward 116.81734922018182
+Epoch 39, timestep 195367
+Car1 Episode 397: Reward 593.6652179341805
+Car2 Episode 397: Reward 213.94612732551403
+Car3 Episode 397: Reward 177.5822083784459
+Epoch 40, timestep 195867
+Car1 Episode 398: Reward 153.02136417714468
+Car2 Episode 398: Reward 384.95426534395904
+Car3 Episode 398: Reward 226.88940236304742
+Epoch 40, timestep 196367
+Car1 Episode 399: Reward 973.9841445524736
+Car2 Episode 399: Reward 138.77133687264535
+Car3 Episode 399: Reward 172.84583227414626
+Epoch 40, timestep 196867
+Car1 Episode 400: Reward -1148.405444153009
+Car2 Episode 400: Reward 218.40302589536606
+Car3 Episode 400: Reward 205.17976476439813
+Epoch 40, timestep 197367
+Car1 Episode 401: Reward 854.2228145203019
+Car2 Episode 401: Reward 851.2287489579863
+Car3 Episode 401: Reward 162.52892321092753
+Epoch 40, timestep 197867
+Car1 Episode 402: Reward 109.84944170138205
+Car2 Episode 402: Reward 104.20957942837006
+Car3 Episode 402: Reward 103.54447702750046
+Epoch 40, timestep 198160
+Car1 Episode 403: Reward 110.85545912215683
+Car2 Episode 403: Reward 275.71538518136265
+Car3 Episode 403: Reward 184.49358539428675
+Epoch 40, timestep 198660
+Car1 Episode 404: Reward 199.45269703339847
+Car2 Episode 404: Reward 565.4959585657909
+Car3 Episode 404: Reward 243.8905749619613
+Epoch 40, timestep 199160
+Car1 Episode 405: Reward 304.9254125620741
+Car2 Episode 405: Reward 621.1955984938259
+Car3 Episode 405: Reward 241.8346213433944
+Epoch 40, timestep 199660
+Car1 Episode 406: Reward 893.1514024208158
+Car2 Episode 406: Reward 379.41268654281265
+Car3 Episode 406: Reward 385.436748898124
+Epoch 40, timestep 200160
+Car1 Episode 407: Reward 580.6969135408593
+Car2 Episode 407: Reward 269.92295467398134
+Car3 Episode 407: Reward 275.95631598492275
+Epoch 41, timestep 200660
+Car1 Episode 408: Reward 758.8217959232048
+Car2 Episode 408: Reward 337.11433054643055
+Car3 Episode 408: Reward 129.5636281072204
+Epoch 41, timestep 201160
+Car1 Episode 409: Reward 526.2433993859019
+Car2 Episode 409: Reward 67.4041599338923
+Car3 Episode 409: Reward 161.1790148389158
+Epoch 41, timestep 201440
+Car1 Episode 410: Reward 131.4469290402956
+Car2 Episode 410: Reward 177.3876982944086
+Car3 Episode 410: Reward 185.20908458650848
+Epoch 41, timestep 201940
+Car1 Episode 411: Reward 1347.6873176245708
+Car2 Episode 411: Reward 154.23250812739144
+Car3 Episode 411: Reward 325.6571892035624
+Epoch 41, timestep 202440
+Car1 Episode 412: Reward 808.1914467212687
+Car2 Episode 412: Reward 373.3803713530585
+Car3 Episode 412: Reward 357.79053887758397
+Epoch 41, timestep 202940
+Car1 Episode 413: Reward 561.1611824938975
+Car2 Episode 413: Reward 253.24300860616862
+Car3 Episode 413: Reward 486.9637986546551
+Epoch 41, timestep 203440
+Car1 Episode 414: Reward 1124.4165797525895
+Car2 Episode 414: Reward 406.1937643619867
+Car3 Episode 414: Reward 939.0347230191504
+Epoch 41, timestep 203940
+Car1 Episode 415: Reward 1541.5927124915056
+Car2 Episode 415: Reward 521.1385598684104
+Car3 Episode 415: Reward 1221.48484065261
+Epoch 41, timestep 204440
+Car1 Episode 416: Reward 978.1920901077794
+Car2 Episode 416: Reward 590.6537086572301
+Car3 Episode 416: Reward 459.74985070166514
+Epoch 41, timestep 204940
+Car1 Episode 417: Reward 407.13628880799195
+Car2 Episode 417: Reward 520.5624110360152
+Car3 Episode 417: Reward 156.02639380827128
+Epoch 41, timestep 205440
+Car1 Episode 418: Reward 27.717961722121704
+Car2 Episode 418: Reward 114.39731663104008
+Car3 Episode 418: Reward 137.84754169570692
+Epoch 42, timestep 205940
+Car1 Episode 419: Reward 726.6672706785131
+Car2 Episode 419: Reward 429.9784552600739
+Car3 Episode 419: Reward 209.79019345265627
+Epoch 42, timestep 206440
+Car1 Episode 420: Reward 569.9115366033074
+Car2 Episode 420: Reward 405.6992452097942
+Car3 Episode 420: Reward 123.49618577918127
+Epoch 42, timestep 206940
+Car1 Episode 421: Reward 179.71539490227593
+Car2 Episode 421: Reward 591.3420069104762
+Car3 Episode 421: Reward 325.07188517941603
+Epoch 42, timestep 207440
+Car1 Episode 422: Reward 427.4523461264798
+Car2 Episode 422: Reward 212.28963575239106
+Car3 Episode 422: Reward 115.92246985185763
+Epoch 42, timestep 207940
+Car1 Episode 423: Reward 1893.440389320716
+Car2 Episode 423: Reward 198.39151358153353
+Car3 Episode 423: Reward 223.19634872431692
+Epoch 42, timestep 208440
+Car1 Episode 424: Reward 673.2300749726955
+Car2 Episode 424: Reward 185.2285767661413
+Car3 Episode 424: Reward 398.2721439315759
+Epoch 42, timestep 208940
+Car1 Episode 425: Reward 183.31226705917533
+Car2 Episode 425: Reward 226.65454884804782
+Car3 Episode 425: Reward 237.263850300702
+Epoch 42, timestep 209440
+Car1 Episode 426: Reward 947.4209552124327
+Car2 Episode 426: Reward 198.3910019306732
+Car3 Episode 426: Reward 1017.3974176895325
+Epoch 42, timestep 209940
+Car1 Episode 427: Reward 1163.806526881249
+Car2 Episode 427: Reward 203.98134589428662
+Car3 Episode 427: Reward 166.11519826531864
+Epoch 42, timestep 210440
+Car1 Episode 428: Reward 319.0929227446047
+Car2 Episode 428: Reward 317.6395362167556
+Car3 Episode 428: Reward 153.64153714849675
+Epoch 43, timestep 210940
+Car1 Episode 429: Reward 1536.236445454357
+Car2 Episode 429: Reward 680.1267021897486
+Car3 Episode 429: Reward 342.26466523456486
+Epoch 43, timestep 211440
+Car1 Episode 430: Reward 524.4333914839333
+Car2 Episode 430: Reward 916.987564929776
+Car3 Episode 430: Reward 267.7459526462647
+Epoch 43, timestep 211940
+Car1 Episode 431: Reward 982.1253955083336
+Car2 Episode 431: Reward 382.7518388680385
+Car3 Episode 431: Reward 453.6485390488694
+Epoch 43, timestep 212440
+Car1 Episode 432: Reward 563.2233493663941
+Car2 Episode 432: Reward 117.34465022553763
+Car3 Episode 432: Reward 202.12020678486175
+Epoch 43, timestep 212940
+Car1 Episode 433: Reward 211.45088110095023
+Car2 Episode 433: Reward 985.0361039910938
+Car3 Episode 433: Reward 304.15361030813665
+Epoch 43, timestep 213440
+Car1 Episode 434: Reward 797.6397975111266
+Car2 Episode 434: Reward 221.57301778178316
+Car3 Episode 434: Reward 429.42447010532555
+Epoch 43, timestep 213940
+Car1 Episode 435: Reward 885.6975788978058
+Car2 Episode 435: Reward 194.86297192481967
+Car3 Episode 435: Reward 388.448988853344
+Epoch 43, timestep 214440
+Car1 Episode 436: Reward 1258.2045639832174
+Car2 Episode 436: Reward 117.59179643518422
+Car3 Episode 436: Reward 179.0442924052072
+Epoch 43, timestep 214940
+Car1 Episode 437: Reward 1113.9038515194547
+Car2 Episode 437: Reward 863.496562412354
+Car3 Episode 437: Reward 1387.8914403593892
+Epoch 43, timestep 215440
+Car1 Episode 438: Reward 509.64670368946287
+Car2 Episode 438: Reward 81.65316521378281
+Car3 Episode 438: Reward 188.32898726582667
+Epoch 44, timestep 215940
+Car1 Episode 439: Reward 752.3371244412548
+Car2 Episode 439: Reward 374.60835876378866
+Car3 Episode 439: Reward 240.7424198605323
+Epoch 44, timestep 216440
+Car1 Episode 440: Reward 404.7642485516784
+Car2 Episode 440: Reward 539.5207285849442
+Car3 Episode 440: Reward 56.486853029395945
+Epoch 44, timestep 216940
+Car1 Episode 441: Reward 1001.9581725981585
+Car2 Episode 441: Reward 249.03046497717662
+Car3 Episode 441: Reward 206.51851824788045
+Epoch 44, timestep 217440
+Car1 Episode 442: Reward 906.1597896508666
+Car2 Episode 442: Reward 347.8952091077277
+Car3 Episode 442: Reward 371.54957282961254
+Epoch 44, timestep 217940
+Car1 Episode 443: Reward 1756.251585862508
+Car2 Episode 443: Reward 316.03185014180576
+Car3 Episode 443: Reward 159.11836819695128
+Epoch 44, timestep 218440
+Car1 Episode 444: Reward 831.371711360199
+Car2 Episode 444: Reward 390.01259149816667
+Car3 Episode 444: Reward 553.6920325128976
+Epoch 44, timestep 218940
+Car1 Episode 445: Reward 644.181096761289
+Car2 Episode 445: Reward 198.78893959504506
+Car3 Episode 445: Reward 354.1306740703126
+Epoch 44, timestep 219440
+Car1 Episode 446: Reward 684.7539254865048
+Car2 Episode 446: Reward 428.0056886832011
+Car3 Episode 446: Reward 451.92456037164897
+Epoch 44, timestep 219940
+Car1 Episode 447: Reward 1142.4311312873276
+Car2 Episode 447: Reward 893.7320232347444
+Car3 Episode 447: Reward 406.63588514077105
+Epoch 44, timestep 220440
+Car1 Episode 448: Reward 352.1690804706611
+Car2 Episode 448: Reward 372.38307724549185
+Car3 Episode 448: Reward 133.39660377028144
+Epoch 45, timestep 220940
+Car1 Episode 449: Reward 1280.717195651355
+Car2 Episode 449: Reward 389.26781272984806
+Car3 Episode 449: Reward 480.8330011117141
+Epoch 45, timestep 221440
+Car1 Episode 450: Reward 1314.2138921981984
+Car2 Episode 450: Reward 364.1995593817368
+Car3 Episode 450: Reward 1269.679546936172
+Epoch 45, timestep 221940
+Car1 Episode 451: Reward 1698.9598159319955
+Car2 Episode 451: Reward 819.8603568115891
+Car3 Episode 451: Reward 954.9102828858944
+Epoch 45, timestep 222440
+Car1 Episode 452: Reward 769.824911040334
+Car2 Episode 452: Reward 136.7482419101612
+Car3 Episode 452: Reward 76.12508065570393
+Epoch 45, timestep 222940
+Car1 Episode 453: Reward 772.7466603243362
+Car2 Episode 453: Reward 107.32717317195794
+Car3 Episode 453: Reward 133.60569747812875
+Epoch 45, timestep 223440
+Car1 Episode 454: Reward 845.1169131679835
+Car2 Episode 454: Reward 540.9293147172905
+Car3 Episode 454: Reward 42.38674118388816
+Epoch 45, timestep 223940
+Car1 Episode 455: Reward 361.48522569858534
+Car2 Episode 455: Reward 349.5691716470407
+Car3 Episode 455: Reward 915.2763903140332
+Epoch 45, timestep 224440
+Car1 Episode 456: Reward 585.3623311030856
+Car2 Episode 456: Reward 388.2020703688259
+Car3 Episode 456: Reward 126.74536947580832
+Epoch 45, timestep 224940
+Car1 Episode 457: Reward 135.63476796871615
+Car2 Episode 457: Reward 565.604764354589
+Car3 Episode 457: Reward 354.0522565281137
+Epoch 45, timestep 225440
+Car1 Episode 458: Reward 185.76638406662593
+Car2 Episode 458: Reward 737.204532573637
+Car3 Episode 458: Reward 242.58220499833465
+Epoch 46, timestep 225940
+Car1 Episode 459: Reward 243.40762102745202
+Car2 Episode 459: Reward 764.9307502661734
+Car3 Episode 459: Reward 36.02166966578885
+Epoch 46, timestep 226440
+Car1 Episode 460: Reward 1863.7493922119017
+Car2 Episode 460: Reward 313.668386603901
+Car3 Episode 460: Reward 484.630552064897
