@@ -9,6 +9,7 @@ Panels:
         - /RobotModel1
         - /LaserScan1
         - /PointCloud21
+        - /PointCloud21/Status1
       Splitter Ratio: 0.5
     Tree Height: 455
   - Class: rviz/Selection
@@ -28,7 +29,7 @@ Panels:
   - Class: rviz/Time
     Name: Time
     SyncMode: 0
-    SyncSource: LaserScan
+    SyncSource: ""
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -177,7 +178,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.009999999776482582
       Style: Flat Squares
-      Topic: /p3dx/front_laser/scan
+      Topic: /car1/front_laser/scan
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -240,7 +241,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.019999999552965164
       Style: Flat Squares
-      Topic: /velodyne_points
+      Topic: /velodyne/velodyne_points
       Unreliable: true
       Use Fixed Frame: true
       Use rainbow: true
@@ -250,14 +251,14 @@ Visualization Manager:
       Marker Topic: /goal_point
       Name: MarkerArray
       Namespaces:
-        "": true
+        {}
       Queue Size: 100
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: odom
+    Fixed Frame: car1/odom_gazebo
     Frame Rate: 30
   Name: root
   Tools:
@@ -317,5 +318,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1386
-  X: 124
-  Y: 146
+  X: 222
+  Y: 112

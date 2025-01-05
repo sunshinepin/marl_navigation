@@ -2,7 +2,7 @@
 
   <!-- Launch gazebo with the specified world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find multi_robot_scenario)/world/dense.world"/>
+    <arg name="world_name" value="$(find multi_robot_scenario)/world/test_walking_people.world"/>
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="gui" value="true"/>

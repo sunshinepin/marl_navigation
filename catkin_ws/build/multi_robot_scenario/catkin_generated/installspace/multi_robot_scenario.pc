@@ -1,4 +1,4 @@
-prefix=/home/xzh/xzh/drl-robot-navigation/catkin_ws/install
+prefix=/home/xzh/xzh/madrl-robot-navigation/catkin_ws/install
 
 Name: multi_robot_scenario
 Description: Description of multi_robot_scenario

@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "${prefix}/include;/usr/include;/usr/include/g
 PROJECT_CATKIN_DEPENDS = "roscpp;sensor_msgs;gazebo_ros".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "-lgazebo_ros_velodyne_laser;-lgazebo_ros_velodyne_gpu_laser".split(';') if "-lgazebo_ros_velodyne_laser;-lgazebo_ros_velodyne_gpu_laser" != "" else []
 PROJECT_NAME = "velodyne_gazebo_plugins"
-PROJECT_SPACE_DIR = "/home/xzh/xzh/drl-robot-navigation/catkin_ws/install"
+PROJECT_SPACE_DIR = "/home/xzh/xzh/madrl-robot-navigation/catkin_ws/install"
 PROJECT_VERSION = "1.0.10"

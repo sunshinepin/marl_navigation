@@ -1,2 +1,2 @@
 - setup-file:
-    local-name: /home/xzh/xzh/drl-robot-navigation/catkin_ws/devel/.private/multi_robot_scenario/setup.sh
+    local-name: /home/xzh/xzh/madrl-robot-navigation/catkin_ws/devel/.private/multi_robot_scenario/setup.sh

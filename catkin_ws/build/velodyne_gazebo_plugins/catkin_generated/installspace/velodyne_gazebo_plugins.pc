@@ -1,4 +1,4 @@
-prefix=/home/xzh/xzh/drl-robot-navigation/catkin_ws/install
+prefix=/home/xzh/xzh/madrl-robot-navigation/catkin_ws/install
 
 Name: velodyne_gazebo_plugins
 Description: Description of velodyne_gazebo_plugins

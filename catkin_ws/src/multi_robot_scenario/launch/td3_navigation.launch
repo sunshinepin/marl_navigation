@@ -1,0 +1,68 @@
+<launch>
+  <!-- Arguments -->
+  <arg name="map_file" default="$(find multi_robot_scenario)/maps/my_map.yaml"/>
+  <arg name="open_rviz" default="true"/>
+  <arg name="move_forward_only" default="true"/>
+
+ <arg name="car1_name" default="car1" />
+  <arg name="car1_x" default="0.0" />
+  <arg name="car1_y" default="6.0" />
+  <arg name="car1_z" default="0.01" />
+  <arg name="car1_roll" default="0.0" />
+  <arg name="car1_pitch" default="0.0" />
+  <arg name="car1_yaw" default="-1.57" />
+  <arg name="car1_odometry_frame" default="odom_car1" />
+
+  <group ns="$(arg car1_name)">
+    <!-- Load the URDF for car1 into the ROS Parameter Server -->
+    <param name="robot_description" command="$(find xacro)/xacro '$(find multi_robot_scenario)/xacro/p3dx/pioneer3dx.xacro' odometry_frame:=$(arg car1_odometry_frame)"/>
+    <param name="laser_frame_id" value="car1/front_laser"/>
+    <!-- Run a python script to send a service call to gazebo_ros to spawn a URDF robot for car1 -->
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model $(arg car1_name) -param robot_description -x $(arg car1_x) -y $(arg car1_y) -z $(arg car1_z)"/>
+
+    <!-- Robot State Publisher for car1 -->
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+      <param name="publish_frequency" type="double" value="30.0"/>
+      <param name="tf_prefix" type="string" value="$(arg car1_name)"/>
+    </node>
+
+    <!-- Joint State Publisher for car1 -->
+    <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher">
+      <param name="publish_frequency" type="double" value="30.0"/>
+    </node>
+
+    <!-- Combined broadcaster for car1 -->
+    <!-- <node pkg="multi_robot_scenario" name="publish_odom_from_gazebo_para_car1" type="publish_odom_from_gazebo_model_tf.py" output="screen">
+      <param name="car_name" value="car1"/>
+    </node> -->
+  </group>
+
+  <!-- 启动 TF 发布 map 到 car1/odom 的变换 -->
+  <node name="map_to_odom_tf" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 map car1/odom_gazebo" />
+
+  <!-- Map server -->
+  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
+  <node pkg="tf" type="static_transform_publisher" name="static_broadcaster1" args="-0.032 0 0.172 0 0 0 1 car1/base_link car1/front_laser 100" />
+
+  <!-- move_base -->
+  <include file="$(find multi_robot_scenario)/launch/move_base.launch">
+    <arg name="move_forward_only" value="$(arg move_forward_only)"/>
+  </include>
+
+  <!-- 启动 Gazebo -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find multi_robot_scenario)/world/dense.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <!-- rviz -->
+  <group if="$(arg open_rviz)"> 
+    <node pkg="rviz" type="rviz" name="rviz" required="true"
+          args="-d $(find multi_robot_scenario)/rviz/turtlebot3_navigation.rviz"/>
+  </group>
+
+</launch>

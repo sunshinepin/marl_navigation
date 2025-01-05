@@ -1,4 +1,4 @@
-prefix=/home/xzh/xzh/drl-robot-navigation/catkin_ws/devel/.private/velodyne_description
+prefix=/home/xzh/xzh/madrl-robot-navigation/catkin_ws/devel/.private/velodyne_description
 
 Name: velodyne_description
 Description: Description of velodyne_description

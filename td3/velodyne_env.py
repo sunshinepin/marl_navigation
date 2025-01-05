@@ -28,38 +28,29 @@ def check_pos(x, y):
 
     if -3.8 > x > -6.2 and 6.2 > y > 3.8:
         goal_ok = False
-
     if -1.3 > x > -2.7 and 4.7 > y > -0.2:
         goal_ok = False
-
     if -0.3 > x > -4.2 and 2.7 > y > 1.3:
         goal_ok = False
-
     if -0.8 > x > -4.2 and -2.3 > y > -4.2:
         goal_ok = False
-
     if -1.3 > x > -3.7 and -0.8 > y > -2.7:
         goal_ok = False
-
     if 4.2 > x > 0.8 and -1.8 > y > -3.2:
         goal_ok = False
-
     if 4 > x > 2.5 and 0.7 > y > -3.2:
         goal_ok = False
-
     if 6.2 > x > 3.8 and -3.3 > y > -4.2:
         goal_ok = False
-
     if 4.2 > x > 1.3 and 3.7 > y > 1.5:
         goal_ok = False
-
     if -3.0 > x > -7.2 and 0.5 > y > -1.5:
         goal_ok = False
-
     if x > 4.5 or x < -4.5 or y > 4.5 or y < -4.5:
         goal_ok = False
 
     return goal_ok
+
 
 
 class GazeboEnv:

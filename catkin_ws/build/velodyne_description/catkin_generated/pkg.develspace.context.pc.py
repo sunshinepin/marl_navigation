@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
 PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "velodyne_description"
-PROJECT_SPACE_DIR = "/home/xzh/xzh/drl-robot-navigation/catkin_ws/devel/.private/velodyne_description"
+PROJECT_SPACE_DIR = "/home/xzh/xzh/madrl-robot-navigation/catkin_ws/devel/.private/velodyne_description"
 PROJECT_VERSION = "1.0.10"

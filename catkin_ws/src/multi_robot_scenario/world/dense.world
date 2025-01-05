@@ -2265,7 +2265,7 @@
       <static>1</static>
     </model>
     <model name='20*20_walls'>
-      <pose>-1.34795 0.203277 0 0 -0 0</pose>
+      <pose>0 0 0 0 -0 0</pose>
       <link name='Wall_0'>
         <collision name='Wall_0_Collision'>
           <geometry>

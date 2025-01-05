@@ -1,3 +1,10 @@
-Symlinking /home/xzh/xzh/drl-robot-navigation/catkin_ws/devel/share/velodyne_description/cmake/velodyne_descriptionConfig-version.cmake
-Symlinking /home/xzh/xzh/drl-robot-navigation/catkin_ws/devel/share/velodyne_description/cmake/velodyne_descriptionConfig.cmake
-Symlinking /home/xzh/xzh/drl-robot-navigation/catkin_ws/devel/lib/pkgconfig/velodyne_description.pc
+Symlinking /home/xzh/xzh/madrl-robot-navigation/catkin_ws/devel/share/velodyne_description/cmake/velodyne_descriptionConfig-version.cmake
+Symlinking /home/xzh/xzh/madrl-robot-navigation/catkin_ws/devel/share/velodyne_description/cmake/velodyne_descriptionConfig.cmake
+Symlinking /home/xzh/xzh/madrl-robot-navigation/catkin_ws/devel/lib/pkgconfig/velodyne_description.pc
+Cleaning: (/home/xzh/xzh/drl-robot-navigation/catkin_ws/devel/.private/velodyne_description/cmake.lock, /home/xzh/xzh/drl-robot-navigation/catkin_ws/devel/./cmake.lock)
+Cleaning: (/home/xzh/xzh/drl-robot-navigation/catkin_ws/devel/.private/velodyne_description/share/velodyne_description/cmake/velodyne_descriptionConfig-version.cmake, /home/xzh/xzh/drl-robot-navigation/catkin_ws/devel/share/velodyne_description/cmake/velodyne_descriptionConfig-version.cmake)
+Cleaning: (/home/xzh/xzh/drl-robot-navigation/catkin_ws/devel/.private/velodyne_description/share/velodyne_description/cmake/velodyne_descriptionConfig.cmake, /home/xzh/xzh/drl-robot-navigation/catkin_ws/devel/share/velodyne_description/cmake/velodyne_descriptionConfig.cmake)
+Cleaning: (/home/xzh/xzh/drl-robot-navigation/catkin_ws/devel/.private/velodyne_description/lib/pkgconfig/velodyne_description.pc, /home/xzh/xzh/drl-robot-navigation/catkin_ws/devel/lib/pkgconfig/velodyne_description.pc)
+Unlinking: /home/xzh/xzh/drl-robot-navigation/catkin_ws/devel/share/velodyne_description/cmake/velodyne_descriptionConfig-version.cmake
+Unlinking: /home/xzh/xzh/drl-robot-navigation/catkin_ws/devel/share/velodyne_description/cmake/velodyne_descriptionConfig.cmake
+Unlinking: /home/xzh/xzh/drl-robot-navigation/catkin_ws/devel/lib/pkgconfig/velodyne_description.pc

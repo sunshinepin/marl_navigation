@@ -1,7 +1,10 @@
 <launch>
+
+<param name="rosconsole/levels/tf" value="error"/>
+
   <arg name="car1_name" default="car1" />
   <arg name="car1_x" default="0.0" />
-  <arg name="car1_y" default="6.0" />
+  <arg name="car1_y" default="0.0" />
   <arg name="car1_z" default="0.01" />
   <arg name="car1_roll" default="0.0" />
   <arg name="car1_pitch" default="0.0" />
@@ -34,7 +37,7 @@
 
   <!-- Launch gazebo with the specified world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find multi_robot_scenario)/world/dense.world"/>
+    <arg name="world_name" value="$(find multi_robot_scenario)/world/world1.world"/>
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="gui" value="true"/>

@@ -1,0 +1,13 @@
+obstacle_range: 3.0
+raytrace_range: 3.5
+
+footprint: [[-0.13, -0.13], [-0.13, 0.13], [0.13, 0.13], [0.13, -0.13]]
+#robot_radius: 0.105
+
+inflation_radius: 0.5
+cost_scaling_factor: 1.5
+
+map_type: costmap
+observation_sources: scan
+scan: {sensor_frame: car1/front_laser, data_type: LaserScan, topic: /car1/front_laser/scan, marking: true, clearing: true}
+

@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xzh/xzh/drl-robot-navigation/catkin_ws/src/multi_robot_scenario
+CMAKE_SOURCE_DIR = /home/xzh/xzh/madrl-robot-navigation/catkin_ws/src/multi_robot_scenario
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/xzh/xzh/drl-robot-navigation/catkin_ws/build/multi_robot_scenario
+CMAKE_BINARY_DIR = /home/xzh/xzh/madrl-robot-navigation/catkin_ws/build/multi_robot_scenario
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -137,9 +137,9 @@ install/local/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xzh/xzh/drl-robot-navigation/catkin_ws/build/multi_robot_scenario/CMakeFiles /home/xzh/xzh/drl-robot-navigation/catkin_ws/build/multi_robot_scenario/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xzh/xzh/madrl-robot-navigation/catkin_ws/build/multi_robot_scenario/CMakeFiles /home/xzh/xzh/madrl-robot-navigation/catkin_ws/build/multi_robot_scenario/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xzh/xzh/drl-robot-navigation/catkin_ws/build/multi_robot_scenario/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xzh/xzh/madrl-robot-navigation/catkin_ws/build/multi_robot_scenario/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
