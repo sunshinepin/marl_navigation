@@ -18,7 +18,7 @@ continuous_action: True
 learner: "MATD3_Learner"
 policy: "MATD3_Policy"
 representation: "Basic_Identical"
-vectorize: "SubprocVecMultiAgentEnv"
+vectorize: "DummyVecMultiAgentEnv"
 
 representation_hidden_size: []  # the units for each hidden layer
 actor_hidden_size: [128, 64] 

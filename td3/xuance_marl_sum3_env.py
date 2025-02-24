@@ -377,22 +377,25 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
         return False, False, min_laser
     
     def get_reward(self, target, collision, action, min_laser, distance, car_index):
-        """计算奖励，加入整形以优化学习"""
         reward = 0.0
 
         if collision:
-            reward += COLLISION_PENALTY  # 碰撞惩罚
+            reward += COLLISION_PENALTY  # -100.0
         elif target:
             if not self.goal_reward_given[car_index]:
-                reward += GOAL_REWARD  # 首次到达目标奖励
+                reward += GOAL_REWARD  # 100.0
                 self.goal_reward_given[car_index] = True
-            reward += STAY_REWARD  # 停留奖励
+            reward += STAY_REWARD  # 1.0
         else:
-            # 鼓励靠近目标、避免障碍和减少急转弯
-            reward += 5.0 / (distance + 1e-6)  # 距离奖励
-            reward -= 0.1 * abs(action[1])  # 转弯惩罚
-            reward -= 0.05 / (min_laser + 1e-6)  # 障碍物惩罚
-            reward += 0.5 * action[0]  # 前进奖励
+            reward += 1.0 * np.exp(-distance)  # 平滑距离奖励
+            if min_laser < 0.5:
+                reward -= 10.0  # 靠近障碍物惩罚
+            reward -= 1.0 / (min_laser + 1e-6)  # 动态避障惩罚
+            if min_laser > 1.5:
+                reward += 0.5  # 安全距离奖励
+            reward -= 0.1 * abs(action[1])  # 平稳转向
+            if min_laser > 1.0:
+                reward += 0.5 * action[0]  # 有条件前进奖励
 
         return reward
 
