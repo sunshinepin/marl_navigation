@@ -1,0 +1,63 @@
+dl_toolbox: "torch"  # The deep learning toolbox. Choices: "torch", "mindspore", "tensorlayer"
+project_name: "MADRL_Navigation"
+logger: "tensorboard"  # Choices: tensorboard, wandb.
+wandb_user_name: "xzh"
+render: Flase
+render_mode: 'rgb_array' # Choices: 'human', 'rgb_array'.
+fps: 15
+test_mode: False
+device: "cuda:0" 
+# device: "cpu" # Choose an calculating device. PyTorch: "cpu", "cuda:0"; TensorFlow: "cpu"/"CPU", "gpu"/"GPU"; MindSpore: "CPU", "GPU", "Ascend", "Davinci".
+distributed_training: False  # Whether to use multi-GPU for distributed training.
+master_port: '12355'  # The master port for current experiment when use distributed training.
+
+agent: "MADDPG"  # the learning algorithms_marl
+env_name: "MyNewMultiAgentEnv"
+env_id: "sum3"
+env_seed: 1
+continuous_action: True
+learner: "MADDPG_Learner"
+policy: "MADDPG_Policy"
+representation: "Basic_Identical"
+vectorize: "DummyVecMultiAgentEnv"
+
+representation_hidden_size: []  # the units for each hidden layer
+actor_hidden_size: [64, 64]
+critic_hidden_size: [64, 64]
+activation: 'leaky_relu'
+activation_action: 'sigmoid'
+use_parameter_sharing: True
+use_actions_mask: False
+
+seed: 1
+parallels: 1
+buffer_size: 12000
+batch_size: 256
+learning_rate_actor: 0.001  # learning rate for actor
+learning_rate_critic: 0.001  # learning rate for critic
+gamma: 0.95  # discount factor
+tau: 0.01  # soft update for target networks
+
+start_noise: 1.0
+end_noise: 0.01
+sigma: 0.1  # random noise for continuous actions
+start_training: 1000  # start training after n episodes
+running_steps: 100000
+training_frequency: 25
+
+use_grad_clip: Ture
+grad_clip_norm: 0.5
+
+eval_interval: 5000
+test_episode: 5
+
+log_dir: "./logs/maddpg/"
+model_dir: "./models/maddpg/"
+
+# 环境特定配置
+launchfile: "maddpg_car3.launch"  # 替换为你的launch文件路径
+environment_dim: 20
+car_names: ["car1", "car2", "car3"]
+car_positions: [[5.0, 5.0, 0.01], [-8.0, -5.0, 0.01], [-5.0, 0.0, 0.01]]  # 替换为实际位置
+car_orientations: [0, 0, 0]  # 替换为实际角度
+max_episode_steps: 500

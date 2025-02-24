@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xzh/xzh/madrl-robot-navigation/catkin_ws/src/velodyne_simulator/velodyne_simulator
+CMAKE_SOURCE_DIR = /home/xzh/xzh/madrl-navigation/catkin_ws/src/velodyne_simulator/velodyne_simulator
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/xzh/xzh/madrl-robot-navigation/catkin_ws/build/velodyne_simulator
+CMAKE_BINARY_DIR = /home/xzh/xzh/madrl-navigation/catkin_ws/build/velodyne_simulator
 
 # Utility rule file for _catkin_empty_exported_target.
 
@@ -67,6 +67,6 @@ CMakeFiles/_catkin_empty_exported_target.dir/clean:
 .PHONY : CMakeFiles/_catkin_empty_exported_target.dir/clean
 
 CMakeFiles/_catkin_empty_exported_target.dir/depend:
-	cd /home/xzh/xzh/madrl-robot-navigation/catkin_ws/build/velodyne_simulator && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xzh/xzh/madrl-robot-navigation/catkin_ws/src/velodyne_simulator/velodyne_simulator /home/xzh/xzh/madrl-robot-navigation/catkin_ws/src/velodyne_simulator/velodyne_simulator /home/xzh/xzh/madrl-robot-navigation/catkin_ws/build/velodyne_simulator /home/xzh/xzh/madrl-robot-navigation/catkin_ws/build/velodyne_simulator /home/xzh/xzh/madrl-robot-navigation/catkin_ws/build/velodyne_simulator/CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/xzh/xzh/madrl-navigation/catkin_ws/build/velodyne_simulator && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xzh/xzh/madrl-navigation/catkin_ws/src/velodyne_simulator/velodyne_simulator /home/xzh/xzh/madrl-navigation/catkin_ws/src/velodyne_simulator/velodyne_simulator /home/xzh/xzh/madrl-navigation/catkin_ws/build/velodyne_simulator /home/xzh/xzh/madrl-navigation/catkin_ws/build/velodyne_simulator /home/xzh/xzh/madrl-navigation/catkin_ws/build/velodyne_simulator/CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/_catkin_empty_exported_target.dir/depend
 

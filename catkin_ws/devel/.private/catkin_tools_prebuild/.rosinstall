@@ -1,2 +1,2 @@
 - setup-file:
-    local-name: /home/xzh/xzh/madrl-robot-navigation/catkin_ws/devel/.private/catkin_tools_prebuild/setup.sh
+    local-name: /home/xzh/xzh/madrl-navigation/catkin_ws/devel/.private/catkin_tools_prebuild/setup.sh

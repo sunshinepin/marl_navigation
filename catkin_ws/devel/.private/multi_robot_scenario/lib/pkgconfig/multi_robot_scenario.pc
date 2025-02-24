@@ -1,4 +1,4 @@
-prefix=/home/xzh/xzh/madrl-robot-navigation/catkin_ws/devel/.private/multi_robot_scenario
+prefix=/home/xzh/xzh/madrl-navigation/catkin_ws/devel/.private/multi_robot_scenario
 
 Name: multi_robot_scenario
 Description: Description of multi_robot_scenario

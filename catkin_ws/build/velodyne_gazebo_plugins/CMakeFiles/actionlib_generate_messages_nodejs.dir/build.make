@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xzh/xzh/madrl-robot-navigation/catkin_ws/src/velodyne_simulator/velodyne_gazebo_plugins
+CMAKE_SOURCE_DIR = /home/xzh/xzh/madrl-navigation/catkin_ws/src/velodyne_simulator/velodyne_gazebo_plugins
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/xzh/xzh/madrl-robot-navigation/catkin_ws/build/velodyne_gazebo_plugins
+CMAKE_BINARY_DIR = /home/xzh/xzh/madrl-navigation/catkin_ws/build/velodyne_gazebo_plugins
 
 # Utility rule file for actionlib_generate_messages_nodejs.
 
@@ -67,6 +67,6 @@ CMakeFiles/actionlib_generate_messages_nodejs.dir/clean:
 .PHONY : CMakeFiles/actionlib_generate_messages_nodejs.dir/clean
 
 CMakeFiles/actionlib_generate_messages_nodejs.dir/depend:
-	cd /home/xzh/xzh/madrl-robot-navigation/catkin_ws/build/velodyne_gazebo_plugins && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xzh/xzh/madrl-robot-navigation/catkin_ws/src/velodyne_simulator/velodyne_gazebo_plugins /home/xzh/xzh/madrl-robot-navigation/catkin_ws/src/velodyne_simulator/velodyne_gazebo_plugins /home/xzh/xzh/madrl-robot-navigation/catkin_ws/build/velodyne_gazebo_plugins /home/xzh/xzh/madrl-robot-navigation/catkin_ws/build/velodyne_gazebo_plugins /home/xzh/xzh/madrl-robot-navigation/catkin_ws/build/velodyne_gazebo_plugins/CMakeFiles/actionlib_generate_messages_nodejs.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/xzh/xzh/madrl-navigation/catkin_ws/build/velodyne_gazebo_plugins && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xzh/xzh/madrl-navigation/catkin_ws/src/velodyne_simulator/velodyne_gazebo_plugins /home/xzh/xzh/madrl-navigation/catkin_ws/src/velodyne_simulator/velodyne_gazebo_plugins /home/xzh/xzh/madrl-navigation/catkin_ws/build/velodyne_gazebo_plugins /home/xzh/xzh/madrl-navigation/catkin_ws/build/velodyne_gazebo_plugins /home/xzh/xzh/madrl-navigation/catkin_ws/build/velodyne_gazebo_plugins/CMakeFiles/actionlib_generate_messages_nodejs.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/actionlib_generate_messages_nodejs.dir/depend
 

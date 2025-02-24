@@ -1,2 +1,2 @@
 - setup-file:
-    local-name: /home/xzh/xzh/madrl-robot-navigation/catkin_ws/install/setup.sh
+    local-name: /home/xzh/xzh/madrl-navigation/catkin_ws/install/setup.sh

@@ -1,5 +1,6 @@
 <launch>
-  <arg name="car1_name" default="car1" />
+<!-- xzh.world -->
+  <!-- <arg name="car1_name" default="car1" />
   <arg name="car1_x" default="-8.0" />
   <arg name="car1_y" default="5.0" />
   <arg name="car1_z" default="0.01" />
@@ -12,7 +13,27 @@
   <arg name="car3_name" default="car3" />
   <arg name="car3_x" default="-5.0" />
   <arg name="car3_y" default="0.0" />
+  <arg name="car3_z" default="0.01" /> -->
+  <!-- sum3_test -->
+  <arg name="car1_name" default="car1" />
+  <arg name="car1_x" default="0.0" />
+  <arg name="car1_y" default="5.0" />
+  <arg name="car1_z" default="0.01" />
+
+  <arg name="car2_name" default="car2" />
+  <arg name="car2_x" default="0.0" />
+  <arg name="car2_y" default="-5.0" />
+  <arg name="car2_z" default="0.01" />
+
+  <arg name="car3_name" default="car3" />
+  <arg name="car3_x" default="-5.0" />
+  <arg name="car3_y" default="0.0" />
   <arg name="car3_z" default="0.01" />
+  
+  <arg name="car4_name" default="car4" />
+  <arg name="car4_x" default="5.0" />
+  <arg name="car4_y" default="0.0" />
+  <arg name="car4_z" default="0.01" />
 
   <group ns="$(arg car1_name)">
     <!-- Load the URDF for car1 into the ROS Parameter Server -->
@@ -90,7 +111,7 @@
 
   <!-- Launch gazebo with the specified world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find multi_robot_scenario)/world/xzh.world"/>
+    <arg name="world_name" value="$(find multi_robot_scenario)/world/ca1_test.world"/>
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="gui" value="true"/>

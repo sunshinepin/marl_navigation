@@ -1,1 +1,1 @@
-/home/xzh/xzh/madrl-robot-navigation/catkin_ws/devel/.private/multi_robot_scenario/lib/pkgconfig/multi_robot_scenario.pc
+/home/xzh/xzh/madrl-navigation/catkin_ws/devel/.private/multi_robot_scenario/lib/pkgconfig/multi_robot_scenario.pc
