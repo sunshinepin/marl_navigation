@@ -96,6 +96,7 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
         }
         self.max_episode_steps = env_config.max_episode_steps
         self._current_step = 0
+        self.alive = [True for _ in range(self.num_agents)] 
 
         # 初始化Gazebo环境变量
         self.start_positions = env_config.car_positions
@@ -190,7 +191,8 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
     
     def agent_mask(self):
         """Returns boolean mask variables indicating which agents are currently alive."""
-        return {agent: True for agent in self.agents}
+        return {agent: self.alive[i] for i, agent in enumerate(self.agents)}
+    
     def state(self):
         global_state = []
         for i in range(self.num_agents):
@@ -267,7 +269,7 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
         self.last_odom[index] = od_data
     def step(self, action_dict):
         """
-        执行动作，更新环境状态，并返回新的观测、奖励、完成标志和信息。
+        执行动作，更新环境状态，并返回新的观测、奖励、完成标志和信息
         """
         self._current_step += 1
         observation = {}
@@ -276,24 +278,25 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
         dones = {}
         infos = {}
 
-        # 应用动作
+        # 应用动作（只对存活的智能体）
         for i, agent in enumerate(self.agents):
-            action = action_dict[agent]
-            action[0] = np.clip(action[0], self.action_space[agent].low[0], self.action_space[agent].high[0])
-            action[1] = np.clip(action[1], self.action_space[agent].low[1], self.action_space[agent].high[1])
+            if self.alive[i]:  # 只对存活的智能体应用动作
+                action = action_dict[agent]
+                action[0] = np.clip(action[0], self.action_space[agent].low[0], self.action_space[agent].high[0])
+                action[1] = np.clip(action[1], self.action_space[agent].low[1], self.action_space[agent].high[1])
 
-            if not self.target_reached[i]:
                 vel_cmd = Twist()
                 vel_cmd.linear.x = (action[0]+1)/2
                 vel_cmd.angular.z = action[1]
                 self.vel_pubs[i].publish(vel_cmd)
             else:
+                # 对死亡的智能体发布零速度
                 vel_cmd = Twist()
                 vel_cmd.linear.x = 0.0
                 vel_cmd.angular.z = 0.0
                 self.vel_pubs[i].publish(vel_cmd)
 
-        # 等待仿真
+        # 仿真步骤
         rospy.wait_for_service("/gazebo/unpause_physics")
         try:
             self.unpause()
@@ -306,66 +309,82 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
         except rospy.ServiceException as e:
             print("/gazebo/pause_physics service call failed")
 
-        # 收集观测、计算奖励
+        # 收集观测和计算奖励
+        all_dead = True
         for i, agent in enumerate(self.agents):
-            done, collision, min_laser = self.observe_collision(self.velodyne_data[i])
+            if self.alive[i]:  # 只处理存活的智能体
+                done, collision, min_laser = self.observe_collision(self.velodyne_data[i])
 
-            if self.last_odom[i] is not None:
-                self.odom_positions[i][0] = self.last_odom[i].pose.pose.position.x
-                self.odom_positions[i][1] = self.last_odom[i].pose.pose.position.y
-                quaternion = Quaternion(
-                    self.last_odom[i].pose.pose.orientation.w,
-                    self.last_odom[i].pose.pose.orientation.x,
-                    self.last_odom[i].pose.pose.orientation.y,
-                    self.last_odom[i].pose.pose.orientation.z,
-                )
-                euler = quaternion.to_euler(degrees=False)
-                angle = round(euler[2], 4)
-            else:
-                angle = 0.0
+                if self.last_odom[i] is not None:
+                    self.odom_positions[i][0] = self.last_odom[i].pose.pose.position.x
+                    self.odom_positions[i][1] = self.last_odom[i].pose.pose.position.y
+                    quaternion = Quaternion(
+                        self.last_odom[i].pose.pose.orientation.w,
+                        self.last_odom[i].pose.pose.orientation.x,
+                        self.last_odom[i].pose.pose.orientation.y,
+                        self.last_odom[i].pose.pose.orientation.z,
+                    )
+                    euler = quaternion.to_euler(degrees=False)
+                    angle = round(euler[2], 4)
+                else:
+                    angle = 0.0
 
-            distance = np.linalg.norm([
-                self.odom_positions[i][0] - self.goal_positions[i][0],
-                self.odom_positions[i][1] - self.goal_positions[i][1]
-            ])
-            skew_x = self.goal_positions[i][0] - self.odom_positions[i][0]
-            skew_y = self.goal_positions[i][1] - self.odom_positions[i][1]
-            dot = skew_x * 1 + skew_y * 0
-            mag1 = np.linalg.norm([skew_x, skew_y])
-            mag2 = 1.0
-            beta = np.arccos(dot / (mag1 * mag2)) if mag1 != 0 else 0.0
+                distance = np.linalg.norm([
+                    self.odom_positions[i][0] - self.goal_positions[i][0],
+                    self.odom_positions[i][1] - self.goal_positions[i][1]
+                ])
+                # 计算角度差
+                skew_x = self.goal_positions[i][0] - self.odom_positions[i][0]
+                skew_y = self.goal_positions[i][1] - self.odom_positions[i][1]
+                dot = skew_x * 1 + skew_y * 0
+                mag1 = np.linalg.norm([skew_x, skew_y])
+                mag2 = 1.0
+                beta = np.arccos(dot / (mag1 * mag2)) if mag1 != 0 else 0.0
 
-            if skew_y < 0:
-                beta = -beta if skew_x >= 0 else beta
+                if skew_y < 0:
+                    beta = -beta if skew_x >= 0 else beta
 
-            theta = beta - angle
-            theta = (theta + np.pi) % (2 * np.pi) - np.pi
+                theta = beta - angle
+                theta = (theta + np.pi) % (2 * np.pi) - np.pi
 
-            if distance < GOAL_REACHED_DIST and not self.target_reached[i]:
-                self.target_reached[i] = True
-                rospy.loginfo(f"Agent {i} reached the goal.")
+                # 检查是否到达目标
+                if distance < GOAL_REACHED_DIST and not self.target_reached[i]:
+                    self.target_reached[i] = True
+                    self.alive[i] = False  # 到达目标后标记死亡
+                    rospy.loginfo(f"Agent {i} reached the goal and died.")
 
-            done_episode = self.steps >= self.max_episode_steps
-            dones[agent] = done_episode or done
-            if done_episode:
-                rospy.loginfo("达到最大步数")
+                # 处理碰撞
+                if collision:
+                    self.alive[i] = False  # 碰撞后标记死亡
+                    rospy.loginfo(f"Agent {i} died due to collision")
 
-            if collision:
-                self.reset_car_position(i)
-                dones[agent] = True
+                all_dead = False  # 只要有一个存活就不是全死
 
+            # 设置终止条件
+            done_episode = self._current_step >= self.max_episode_steps
+            dones[agent] = not self.alive[i]  # 每个智能体的done状态取决于是否存活
+            truncated = truncated or all_dead  # 回合结束条件：达到最大步数或全死
+
+            # 计算观测
             laser_state = self.velodyne_data[i]
-            robot_state = [distance, theta, action_dict[agent][0], action_dict[agent][1]]
+            robot_state = [distance, theta, action_dict[agent][0], action_dict[agent][1]] if self.alive[i] else [0.0, 0.0, 0.0, 0.0]
             observation[agent] = np.concatenate([laser_state, robot_state])
 
-            reward = self.get_reward(self.target_reached[i], collision, action_dict[agent], min_laser, distance, i)
+            # 计算奖励
+            reward = self.get_reward(
+                self.target_reached[i], 
+                collision if self.alive[i] else False, 
+                action_dict[agent] if self.alive[i] else [0.0, 0.0], 
+                min_laser if self.alive[i] else 0.0, 
+                distance if self.alive[i] else 0.0, 
+                i
+            )
             rewards[agent] = reward
-
-            infos[agent] = {}
+            infos[agent] = {"alive": self.alive[i], "reached_goal": self.target_reached[i]}
             self.record_trajectory(i)
 
         return observation, rewards, dones, truncated, infos
-
+    
     def observe_collision(self, laser_data):
         """
         检查是否发生碰撞。
@@ -379,23 +398,20 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
     def get_reward(self, target, collision, action, min_laser, distance, car_index):
         reward = 0.0
 
+        if target and not self.goal_reward_given[car_index]:
+            reward += GOAL_REWARD  # 到达目标奖励
+            self.goal_reward_given[car_index] = True
+        elif target:  # 死亡后仍因到达目标给小奖励
+            reward += 1.0
+
         if collision:
-            reward += COLLISION_PENALTY  # -100.0
-        elif target:
-            if not self.goal_reward_given[car_index]:
-                reward += GOAL_REWARD  # 100.0
-                self.goal_reward_given[car_index] = True
-            reward += STAY_REWARD  # 1.0
+            reward += COLLISION_PENALTY  # 碰撞惩罚
         else:
-            reward += 1.0 * np.exp(-distance)  # 平滑距离奖励
-            if min_laser < 0.5:
-                reward -= 10.0  # 靠近障碍物惩罚
-            reward -= 1.0 / (min_laser + 1e-6)  # 动态避障惩罚
-            if min_laser > 1.5:
-                reward += 0.5  # 安全距离奖励
-            reward -= 0.1 * abs(action[1])  # 平稳转向
-            if min_laser > 1.0:
-                reward += 0.5 * action[0]  # 有条件前进奖励
+            r3 = lambda x: 1 - x if x < 1 else 0.0
+            reward += action[0] / 2 - abs(action[1]) / 2 - r3(min_laser) / 2 
+            # 添加全局奖励：如果所有智能体都到达目标
+        if all(self.target_reached):
+            reward += 50.0  # 额外协同奖励
 
         return reward
 
@@ -408,7 +424,7 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
         self._current_step = 0
         self.target_reached = [False for _ in range(self.num_agents)]
         self.goal_reward_given = [False for _ in range(self.num_agents)]
-
+        self.alive = [True for _ in range(self.num_agents)]  # 重置时所有智能体复活
         try:
             self.reset_proxy()
         except rospy.ServiceException as e:

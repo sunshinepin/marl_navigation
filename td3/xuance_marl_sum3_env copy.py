@@ -15,13 +15,13 @@ from geometry_msgs.msg import Twist, Point
 from gazebo_msgs.msg import ModelState
 from std_srvs.srv import Empty
 from squaternion import Quaternion
-from visualization_msgs.msg import Marker
+from visualization_msgs.msg import Marker, MarkerArray
 from xuance.environment import RawMultiAgentEnv
 import yaml
 from gym.spaces import Box
-#这版没有可视化
+# 查看是否是奖励设置的问题
 # 常量定义
-GOAL_REACHED_DIST = 0.3
+GOAL_REACHED_DIST = 0.35
 TIME_DELTA = 0.1
 MAX_STEPS = 500
 COLLISION_DIST = 0.35
@@ -98,9 +98,9 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
         self._current_step = 0
 
         # 初始化Gazebo环境变量
-        self.start_positions = env_config.car_positions  # 从 YAML 读取起始位置
-        self.start_orientations = env_config.car_orientations  # 从 YAML 读取初始角度
-        self.goal_positions = [[0, 0] for _ in range(self.num_agents)]  # 初始化为空，稍后重置
+        self.start_positions = env_config.car_positions
+        self.start_orientations = env_config.car_orientations
+        self.goal_positions = [[0, 0] for _ in range(self.num_agents)]
         self.upper = 5.0
         self.lower = -5.0
         self.velodyne_data = [np.ones(20) * 10 for _ in range(self.num_agents)]
@@ -109,34 +109,31 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
         self.target_reached = [False for _ in range(self.num_agents)]
         self.goal_reward_given = [False for _ in range(self.num_agents)]
 
-        # 初始化odom_positions
         self.odom_positions = [[0, 0] for _ in range(self.num_agents)]
-        # rospy.loginfo(f"odom_positions initialized: {self.odom_positions}")
 
         # 初始化模型状态
         self.set_self_states = []
         for i in range(self.num_agents):
             state = ModelState()
             state.model_name = env_config.car_names[i]
-            # 设置起始位置
             state.pose.position.x = self.start_positions[i][0]
             state.pose.position.y = self.start_positions[i][1]
             state.pose.position.z = self.start_positions[i][2]
-            # 设置起始朝向
             angle = self.start_orientations[i]
-            q = Quaternion.from_euler(0, 0, angle)  # 使用 squaternion 将角度转换为四元数
+            q = Quaternion.from_euler(0, 0, angle)
             state.pose.orientation.x = q.x
             state.pose.orientation.y = q.y
             state.pose.orientation.z = q.z
             state.pose.orientation.w = q.w
             self.set_self_states.append(state)
-        # rospy.loginfo(f"Model states initialized: {self.set_self_states}")
 
-        # 初始化ROS节点和发布者/订阅者
+        # 初始化ROS节点
         rospy.init_node("gym_env", anonymous=True)
-        
+
+        # 初始化发布者和订阅者
         self.vel_pubs = []
         self.set_states = []
+        self.goal_marker_pubs = []  # 新增：目标点Marker发布者
         self.unpause = rospy.ServiceProxy("/gazebo/unpause_physics", Empty)
         self.pause = rospy.ServiceProxy("/gazebo/pause_physics", Empty)
         self.reset_proxy = rospy.ServiceProxy("/gazebo/reset_world", Empty)
@@ -145,21 +142,21 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
         self.trajectory_files = []
         self.trajectory_pubs = []
         self.trajectories = []
-        
+
         for i in range(self.num_agents):
             car_name = env_config.car_names[i]
             self.vel_pubs.append(rospy.Publisher(f"/{car_name}/cmd_vel", Twist, queue_size=1))
-            self.set_states.append(rospy.Publisher(
-                "/gazebo/set_model_state", ModelState, queue_size=10
-            ))
+            self.set_states.append(rospy.Publisher("/gazebo/set_model_state", ModelState, queue_size=10))
             self.velodynes.append(rospy.Subscriber(
-                f"/{car_name}/velodyne/velodyne_points", PointCloud2, self.velodyne_callback, queue_size=1,
-                callback_args=i))
+                f"/{car_name}/velodyne/velodyne_points", PointCloud2, self.velodyne_callback, queue_size=1, callback_args=i))
             self.odom.append(rospy.Subscriber(
                 f"/{car_name}/odom_gazebo", Odometry, self.odom_callback, queue_size=1, callback_args=i))
             self.trajectory_files.append(f"trajectory_{car_name}.txt")
             self.clear_trajectory_file(i)
             self.trajectory_pubs.append(rospy.Publisher(f"{car_name}/trajectory", Marker, queue_size=10))
+            
+            self.goal_marker_pubs.append(rospy.Publisher(f"{car_name}/goal_marker", MarkerArray, queue_size=10))
+
             trajectory = Marker()
             trajectory.header.frame_id = "world"
             trajectory.type = Marker.LINE_STRIP
@@ -171,12 +168,10 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
             trajectory.color.b = 1.0
             trajectory.points = []
             self.trajectories.append(trajectory)
-        
-        # 启动ROS回调线程
+
         self.ros_thread = threading.Thread(target=self.ros_spin)
         self.ros_thread.start()
-        
-        # 初始化环境
+
         self.reset()
     
     def ros_spin(self):
@@ -382,66 +377,66 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
         return False, False, min_laser
     
     def get_reward(self, target, collision, action, min_laser, distance, car_index):
-        """计算奖励，加入整形以优化学习"""
         reward = 0.0
 
         if collision:
-            reward += COLLISION_PENALTY  # 碰撞惩罚
+            reward += COLLISION_PENALTY  # -100.0
         elif target:
             if not self.goal_reward_given[car_index]:
-                reward += GOAL_REWARD  # 首次到达目标奖励
+                reward += GOAL_REWARD  # 100.0
                 self.goal_reward_given[car_index] = True
-            reward += STAY_REWARD  # 停留奖励
+            reward += STAY_REWARD  # 1.0
         else:
-            # 鼓励靠近目标、避免障碍和减少急转弯
-            reward += 5.0 / (distance + 1e-6)  # 距离奖励
-            reward -= 0.1 * abs(action[1])  # 转弯惩罚
-            reward -= 0.05 / (min_laser + 1e-6)  # 障碍物惩罚
-            reward += 0.5 * action[0]  # 前进奖励
+            reward += 1.0 * np.exp(-distance)  # 平滑距离奖励
+            if min_laser < 0.5:
+                reward -= 10.0  # 靠近障碍物惩罚
+            reward -= 1.0 / (min_laser + 1e-6)  # 动态避障惩罚
+            if min_laser > 1.5:
+                reward += 0.5  # 安全距离奖励
+            reward -= 0.1 * abs(action[1])  # 平稳转向
+            if min_laser > 1.0:
+                reward += 0.5 * action[0]  # 有条件前进奖励
 
         return reward
 
     def reset(self):
         """
         重置环境到初始状态，并返回初始观测。
-        每次重置时随机生成起始位置和朝向。
+        每次重置时随机生成起始位置和朝向，并在RViz中显示目标点。
         """
         self.steps = 0
         self._current_step = 0
         self.target_reached = [False for _ in range(self.num_agents)]
         self.goal_reward_given = [False for _ in range(self.num_agents)]
 
-        # 重置仿真
         try:
             self.reset_proxy()
         except rospy.ServiceException as e:
             rospy.logerr("调用 /gazebo/reset_world 服务失败")
 
-        # 允许仿真更新
         try:
             self.unpause()
         except rospy.ServiceException as e:
             rospy.logerr("调用 /gazebo/unpause_physics 服务失败")
-        rospy.sleep(TIME_DELTA * 2)  # 增加等待时间以确保仿真稳定
+        rospy.sleep(TIME_DELTA * 2)
 
-        # 先生成所有目标位置
+        # 生成目标位置并发布Marker
         existing_goals = []
         for i in range(self.num_agents):
             gx, gy = generate_unique_goal(existing_goals, self.lower, self.upper, [])
             self.goal_positions[i] = [gx, gy]
             existing_goals.append((gx, gy))
             rospy.loginfo(f"Agent {self.agents[i]} assigned goal position: ({gx}, {gy})")
+            self.publish_goal_marker(i)  # 发布目标点Marker
 
-        # 再生成所有随机起始位置和朝向
+        # 生成随机起始位置和朝向
         existing_starts = []
         for i in range(self.num_agents):
-            # 随机生成起始位置
             sx, sy = generate_unique_goal(existing_starts, self.lower, self.upper, existing_goals)
-            self.start_positions[i] = [sx, sy, 0.01]  # z 设为 0.01 与环境一致
+            self.start_positions[i] = [sx, sy, 0.01]
             existing_starts.append((sx, sy))
 
-            # 随机生成朝向
-            self.start_orientations[i] = np.random.uniform(0, 2 * np.pi)  # 随机角度 [0, 2π]
+            self.start_orientations[i] = np.random.uniform(0, 2 * np.pi)
             angle = self.start_orientations[i]
             q = Quaternion.from_euler(0, 0, angle)
             self.set_self_states[i].pose.position.x = sx
@@ -454,10 +449,8 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
             self.set_states[i].publish(self.set_self_states[i])
             rospy.loginfo(f"Agent {self.agents[i]} assigned random start position: ({sx}, {sy}) and orientation: {angle:.2f}")
 
-        # 等待仿真更新
         rospy.sleep(TIME_DELTA)
 
-        # 暂停仿真
         try:
             self.pause()
         except rospy.ServiceException as e:
@@ -482,24 +475,15 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
                 beta = -beta if skew_x >= 0 else beta
 
             theta = beta - self.start_orientations[i]
-            theta = (theta + np.pi) % (2 * np.pi) - np.pi  # 归一化到 [-pi, pi]
+            theta = (theta + np.pi) % (2 * np.pi) - np.pi
 
             robot_state = [distance, theta, 0.0, 0.0]
             observations[agent] = np.concatenate([laser_state, robot_state])
 
-            # 重置轨迹
             self.trajectories[i].points = []
             self.record_trajectory(i)
 
         return observations, {}
-
-
-    def set_goal_marker(self, index, marker):
-        """
-        发布目标位置Marker。
-        """
-        car_name = self.agents[index].replace("agent_", "car")
-        self.trajectory_pubs[index].publish(marker)
 
     def reset_car_position(self, index):
         """
@@ -556,3 +540,28 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
         """
         rospy.signal_shutdown("训练完成")
         self.ros_thread.join()
+
+    def publish_goal_marker(self, index):
+        marker = Marker()
+        marker.header.frame_id = "world"
+        marker.header.stamp = rospy.Time.now()
+        marker.ns = f"goal_{self.agents[index]}"
+        marker.id = index
+        marker.type = Marker.SPHERE
+        marker.action = Marker.ADD
+        marker.pose.position.x = self.goal_positions[index][0]
+        marker.pose.position.y = self.goal_positions[index][1]
+        marker.pose.position.z = 0.1
+        marker.pose.orientation.w = 1.0
+        marker.scale.x = 0.2
+        marker.scale.y = 0.2
+        marker.scale.z = 0.2
+        marker.color.a = 1.0
+        marker.color.r = 0.0
+        marker.color.g = 1.0
+        marker.color.b = 0.0
+        
+        marker_array = MarkerArray()
+        marker_array.markers.append(marker)
+        self.goal_marker_pubs[index].publish(marker_array)
+        rospy.loginfo(f"Published goal marker array for {self.agents[index]} at ({self.goal_positions[index][0]}, {self.goal_positions[index][1]})")
