@@ -98,8 +98,8 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
         self._current_step = 0
         self.alive = [True for _ in range(self.num_agents)] 
         self.prev_positions = [[0.0, 0.0] for _ in range(self.num_agents)]  # 记录上一步位置
-        self.direction_reward = 5.0  # 朝目标方向移动的奖励值，可调整
-
+        self.direction_reward_scale = 1.0  # 方向奖励的系数，可调整
+        self.direction_penalty_scale = 1.0  # 方向惩罚的系数，可调整
         # 初始化Gazebo环境变量
         self.start_positions = env_config.car_positions
         self.start_orientations = env_config.car_orientations
@@ -414,12 +414,16 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
         displacement_norm = np.linalg.norm(displacement)
         
         # 如果有位移，检查是否朝目标方向移动
-        if displacement_norm > 0:  # 确保有移动
+        if displacement_norm > 0.01:  # 增加最小移动阈值，避免噪声
             displacement_direction = displacement / displacement_norm  # 归一化位移
-            # 计算点积：如果点积大于0，说明朝目标方向移动
+            # 计算点积
             dot_product = np.dot(displacement_direction, goal_direction)
+            
+            # 动态奖励/惩罚：根据点积和位移幅度
             if dot_product > 0:  # 朝目标方向移动
-                reward += self.direction_reward  # 给予方向奖励
+                reward += self.direction_reward_scale * dot_product * displacement_norm  # 奖励与方向和距离成正比
+            elif dot_product < 0:  # 反向移动
+                reward -= self.direction_penalty_scale * abs(dot_product) * displacement_norm  # 惩罚与反方向和距离成正比
 
         # 更新上一步位置
         self.prev_positions[car_index] = current_pos.copy()

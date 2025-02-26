@@ -10,10 +10,10 @@ import torch.nn.functional as F
 from torch.utils.tensorboard import SummaryWriter
 from replay_buffer import MultiAgentReplayBuffer
 from xuance_marl_sum3_env import MyNewMultiAgentEnv
-from types import SimpleNamespace  # 导入 SimpleNamespace
+from types import SimpleNamespace
 
 # 评估函数（多智能体版本）
-def evaluate(networks, env, epoch, eval_episodes=10):
+def evaluate(network, env, epoch, eval_episodes=10):
     avg_rewards = {agent: 0.0 for agent in env.agents}
     collisions = {agent: 0 for agent in env.agents}
     for _ in range(eval_episodes):
@@ -23,7 +23,7 @@ def evaluate(networks, env, epoch, eval_episodes=10):
         while not all(dones.values()) and step_count < env.max_episode_steps:
             actions = {agent: [(raw_action[0] + 1) / 2, raw_action[1]] 
                        for agent, raw_action in 
-                       {agent: networks[agent].get_action(np.array(obs[agent])) 
+                       {agent: network.get_action(np.array(obs[agent]), agent) 
                         for agent in env.agents if env.alive[env.agents.index(agent)]}.items()}
             next_obs, rewards, dones, truncated, infos = env.step(actions)
             for agent in env.agents:
@@ -83,7 +83,7 @@ class MATD3(object):
     def __init__(self, env_info, max_action):
         self.agents = env_info['agents']
         self.num_agents = env_info['num_agents']
-        obs_dim = env_info['state_space'][self.agents[0]].shape[0]  # 改为 'state_space'
+        obs_dim = env_info['state_space'][self.agents[0]].shape[0]
         action_dim = env_info['action_space'][self.agents[0]].shape[0]
         state_dim = obs_dim * self.num_agents
         total_action_dim = action_dim * self.num_agents
@@ -202,7 +202,6 @@ if __name__ == "__main__":
     if save_model and not os.path.exists("./pytorch_models"):
         os.makedirs("./pytorch_models")
 
-    # 使用 SimpleNamespace 将字典转换为支持属性访问的对象
     env_config_dict = {
         "env_id": "multi_car_env",
         "car_names": ["car1", "car2", "car3"],
@@ -261,14 +260,12 @@ if __name__ == "__main__":
             done_bool = {agent: 0 if episode_timesteps + 1 == env.max_episode_steps else int(dones[agent]) 
                          for agent in env.agents}
 
-            # 构造符合 add() 方法参数的字典
             obs_dict = {agent: obs[agent] for agent in env.agents}
             actions_dict = {agent: actions.get(agent, np.zeros(2)) for agent in env.agents}
             rewards_dict = {agent: rewards[agent] for agent in env.agents}
             dones_dict = {agent: done_bool[agent] for agent in env.agents}
             next_obs_dict = {agent: next_obs[agent] for agent in env.agents}
 
-            # 直接传递 5 个字典，而不是解包
             replay_buffer.add(obs_dict, actions_dict, rewards_dict, dones_dict, next_obs_dict)
 
             obs = next_obs
@@ -286,7 +283,7 @@ if __name__ == "__main__":
         if timesteps_since_eval >= eval_freq:
             print("Validating")
             timesteps_since_eval %= eval_freq
-            avg_rewards = evaluate(network.actors, env, epoch)
+            avg_rewards = evaluate(network, env, epoch)
             evaluations.append(avg_rewards)
             network.save(file_name, "./pytorch_models")
             np.save(f"./results/{file_name}", evaluations)
@@ -296,7 +293,7 @@ if __name__ == "__main__":
             epoch += 1
             episode_num += 1
 
-    evaluations.append(evaluate(network.actors, env, epoch))
+    evaluations.append(evaluate(network, env, epoch))
     if save_model:
         network.save(file_name, "./pytorch_models")
     np.save(f"./results/{file_name}", evaluations)
