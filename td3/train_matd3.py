@@ -43,62 +43,82 @@ def evaluate(network, env, epoch, eval_episodes=10):
     print("..............................................")
     return avg_rewards
 
-# Actor网络（每个智能体独立）
+# Actor网络（单车版本，与多车一致）
 class Actor(nn.Module):
-    def __init__(self, obs_dim, action_dim):
+    def __init__(self, state_dim, action_dim):
         super(Actor, self).__init__()
-        self.layer_1 = nn.Linear(obs_dim, 800)
+        self.layer_1 = nn.Linear(state_dim, 800)
         self.layer_2 = nn.Linear(800, 600)
         self.layer_3 = nn.Linear(600, action_dim)
         self.tanh = nn.Tanh()
 
-    def forward(self, obs):
-        obs = F.relu(self.layer_1(obs))
-        obs = F.relu(self.layer_2(obs))
-        return self.tanh(self.layer_3(obs))
+    def forward(self, s):
+        s = F.relu(self.layer_1(s))
+        s = F.relu(self.layer_2(s))
+        a = self.tanh(self.layer_3(s))
+        return a
 
-# Critic网络（接收全局状态和联合动作）
+# Critic网络（单车版本）
 class Critic(nn.Module):
-    def __init__(self, state_dim, total_action_dim):
+    def __init__(self, state_dim, action_dim):
         super(Critic, self).__init__()
-        self.layer_1 = nn.Linear(state_dim + total_action_dim, 800)
-        self.layer_2 = nn.Linear(800, 600)
+        self.layer_1 = nn.Linear(state_dim, 800)
+        self.layer_2_s = nn.Linear(800, 600)
+        self.layer_2_a = nn.Linear(action_dim, 600)
         self.layer_3 = nn.Linear(600, 1)
-        self.layer_4 = nn.Linear(state_dim + total_action_dim, 800)
-        self.layer_5 = nn.Linear(800, 600)
+        self.layer_4 = nn.Linear(state_dim, 800)
+        self.layer_5_s = nn.Linear(800, 600)
+        self.layer_5_a = nn.Linear(action_dim, 600)
         self.layer_6 = nn.Linear(600, 1)
 
-    def forward(self, state, actions):
-        sa = torch.cat([state, actions], dim=1)
-        s1 = F.relu(self.layer_1(sa))
-        s1 = F.relu(self.layer_2(s1))
+    def forward(self, s, a):
+        s1 = F.relu(self.layer_1(s))
+        self.layer_2_s(s1)
+        self.layer_2_a(a)
+        s11 = torch.mm(s1, self.layer_2_s.weight.data.t())
+        s12 = torch.mm(a, self.layer_2_a.weight.data.t())
+        s1 = F.relu(s11 + s12 + self.layer_2_a.bias.data)
         q1 = self.layer_3(s1)
-        s2 = F.relu(self.layer_4(sa))
-        s2 = F.relu(self.layer_5(s2))
+
+        s2 = F.relu(self.layer_4(s))
+        self.layer_5_s(s2)
+        self.layer_5_a(a)
+        s21 = torch.mm(s2, self.layer_5_s.weight.data.t())
+        s22 = torch.mm(a, self.layer_5_a.weight.data.t())
+        s2 = F.relu(s21 + s22 + self.layer_5_a.bias.data)
         q2 = self.layer_6(s2)
         return q1, q2
 
 # MATD3类
 class MATD3(object):
-    def __init__(self, env_info, max_action):
+    def __init__(self, env_info, max_action, pretrained_actor_path=None, pretrained_critic_path=None):
         self.agents = env_info['agents']
         self.num_agents = env_info['num_agents']
-        obs_dim = env_info['state_space'][self.agents[0]].shape[0]
-        action_dim = env_info['action_space'][self.agents[0]].shape[0]
-        state_dim = obs_dim * self.num_agents
-        total_action_dim = action_dim * self.num_agents
+        obs_dim = env_info['state_space'][self.agents[0]].shape[0]  # 24
+        action_dim = env_info['action_space'][self.agents[0]].shape[0]  # 2
 
         self.actors = {agent: Actor(obs_dim, action_dim).to(device) for agent in self.agents}
         self.actor_targets = {agent: Actor(obs_dim, action_dim).to(device) for agent in self.agents}
         self.actor_optimizers = {agent: torch.optim.Adam(self.actors[agent].parameters()) for agent in self.agents}
         
-        self.critics = {agent: Critic(state_dim, total_action_dim).to(device) for agent in self.agents}
-        self.critic_targets = {agent: Critic(state_dim, total_action_dim).to(device) for agent in self.agents}
+        self.critics = {agent: Critic(obs_dim, action_dim).to(device) for agent in self.agents}
+        self.critic_targets = {agent: Critic(obs_dim, action_dim).to(device) for agent in self.agents}
         self.critic_optimizers = {agent: torch.optim.Adam(self.critics[agent].parameters()) for agent in self.agents}
 
-        for agent in self.agents:
-            self.actor_targets[agent].load_state_dict(self.actors[agent].state_dict())
-            self.critic_targets[agent].load_state_dict(self.critics[agent].state_dict())
+        # 加载单车预训练模型
+        if pretrained_actor_path:
+            pretrained_actor_state_dict = torch.load(pretrained_actor_path)
+            for agent in self.agents:
+                self.actors[agent].load_state_dict(pretrained_actor_state_dict)
+                self.actor_targets[agent].load_state_dict(pretrained_actor_state_dict)
+                print(f"Loaded pretrained Actor for {agent} from {pretrained_actor_path}")
+        
+        if pretrained_critic_path:
+            pretrained_critic_state_dict = torch.load(pretrained_critic_path)
+            for agent in self.agents:
+                self.critics[agent].load_state_dict(pretrained_critic_state_dict)
+                self.critic_targets[agent].load_state_dict(pretrained_critic_state_dict)
+                print(f"Loaded pretrained Critic for {agent} from {pretrained_critic_path}")
 
         self.max_action = max_action
         self.writer = SummaryWriter()
@@ -122,24 +142,17 @@ class MATD3(object):
             dones = {agent: torch.Tensor(batch[f'dones_{agent}']).to(device) for agent in self.agents}
             next_states = {agent: torch.Tensor(batch[f'next_obs_{agent}']).to(device) for agent in self.agents}
 
-            global_state = torch.cat([states[agent] for agent in self.agents], dim=1)
-            joint_action = torch.cat([actions[agent] for agent in self.agents], dim=1)
-            next_global_state = torch.cat([next_states[agent] for agent in self.agents], dim=1)
-
-            next_joint_action = {}
             for agent in self.agents:
                 next_action = self.actor_targets[agent](next_states[agent])
                 noise = torch.Tensor(next_action).data.normal_(0, policy_noise).to(device)
                 noise = noise.clamp(-noise_clip, noise_clip)
-                next_joint_action[agent] = (next_action + noise).clamp(-self.max_action, self.max_action)
-            next_joint_action_tensor = torch.cat([next_joint_action[agent] for agent in self.agents], dim=1)
+                next_action = (next_action + noise).clamp(-self.max_action, self.max_action)
 
-            for agent in self.agents:
-                target_Q1, target_Q2 = self.critic_targets[agent](next_global_state, next_joint_action_tensor)
+                target_Q1, target_Q2 = self.critic_targets[agent](next_states[agent], next_action)
                 target_Q = torch.min(target_Q1, target_Q2)
                 target_Q = rewards[agent] + ((1 - dones[agent]) * discount * target_Q).detach()
 
-                current_Q1, current_Q2 = self.critics[agent](global_state, joint_action)
+                current_Q1, current_Q2 = self.critics[agent](states[agent], actions[agent])
                 critic_loss = F.mse_loss(current_Q1, target_Q) + F.mse_loss(current_Q2, target_Q)
 
                 self.critic_optimizers[agent].zero_grad()
@@ -148,10 +161,7 @@ class MATD3(object):
 
                 if it % policy_freq == 0:
                     actor_action = self.actors[agent](states[agent])
-                    joint_action_actor = joint_action.clone()
-                    start_idx = self.agents.index(agent) * 2
-                    joint_action_actor[:, start_idx:start_idx+2] = actor_action
-                    q1, _ = self.critics[agent](global_state, joint_action_actor)
+                    q1, _ = self.critics[agent](states[agent], actor_action)
                     actor_loss = -q1.mean()
 
                     self.actor_optimizers[agent].zero_grad()
@@ -163,7 +173,7 @@ class MATD3(object):
                     for param, target_param in zip(self.critics[agent].parameters(), self.critic_targets[agent].parameters()):
                         target_param.data.copy_(tau * param.data + (1 - tau) * target_param.data)
 
-            self.writer.add_scalar(f"Critic_Loss/{agent}", critic_loss.item(), self.iter_count)
+                self.writer.add_scalar(f"Critic_Loss/{agent}", critic_loss.item(), self.iter_count)
 
         self.iter_count += 1
 
@@ -196,6 +206,9 @@ if __name__ == "__main__":
     file_name = "MATD3_multi_car"
     save_model = True
     load_model = False
+    random_near_obstacle = True
+    pretrained_actor_path = "./pytorch_models/TD3_velodyne_actor.pth"  # 单车预训练 Actor 路径
+    pretrained_critic_path = "./pytorch_models/TD3_velodyne_critic.pth"  # 单车预训练 Critic 路径
 
     if not os.path.exists("./results"):
         os.makedirs("./results")
@@ -225,7 +238,9 @@ if __name__ == "__main__":
     np.random.seed(seed)
     max_action = 1.0
 
-    network = MATD3(env_info, max_action)
+    network = MATD3(env_info, max_action, 
+                    pretrained_actor_path=pretrained_actor_path, 
+                    pretrained_critic_path=pretrained_critic_path)
     replay_buffer = MultiAgentReplayBuffer(buffer_size, env_info['num_agents'], seed)
     if load_model:
         try:
@@ -238,6 +253,8 @@ if __name__ == "__main__":
     timesteps_since_eval = 0
     episode_num = 0
     epoch = 1
+    count_rand_actions = {agent: 0 for agent in env_info['agents']}
+    random_actions = {agent: None for agent in env_info['agents']}
 
     while timestep < max_timesteps:
         obs, _ = env.reset()
@@ -254,6 +271,22 @@ if __name__ == "__main__":
                 if env.alive[env.agents.index(agent)]:
                     raw_action = network.get_action(obs[agent], agent, expl_noise)
                     raw_action = np.clip(raw_action, -max_action, max_action)
+
+                    if random_near_obstacle:
+                        laser_data = obs[agent][:20]  # 假设前 20 维是激光雷达数据
+                        if (
+                            np.random.uniform(0, 1) > 0.85
+                            and min(laser_data) < 0.6
+                            and count_rand_actions[agent] < 1
+                        ):
+                            count_rand_actions[agent] = np.random.randint(8, 15)
+                            random_actions[agent] = np.random.uniform(-1, 1, 2)
+
+                        if count_rand_actions[agent] > 0:
+                            count_rand_actions[agent] -= 1
+                            raw_action = random_actions[agent]
+                            raw_action[0] = -1
+
                     actions[agent] = [(raw_action[0] + 1) / 2, raw_action[1]]
 
             next_obs, rewards, dones, truncated, infos = env.step(actions)

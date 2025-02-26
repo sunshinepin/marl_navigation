@@ -478,7 +478,7 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
             gx, gy = generate_unique_goal(existing_goals, self.lower, self.upper, [])
             self.goal_positions[i] = [gx, gy]
             existing_goals.append((gx, gy))
-            rospy.loginfo(f"Agent {self.agents[i]} assigned goal position: ({gx}, {gy})")
+            # rospy.loginfo(f"Agent {self.agents[i]} assigned goal position: ({gx}, {gy})")
             self.publish_goal_marker(i)  # 发布目标点Marker
 
         # 生成随机起始位置和朝向
@@ -499,7 +499,7 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
             self.set_self_states[i].pose.orientation.z = q.z
             self.set_self_states[i].pose.orientation.w = q.w
             self.set_states[i].publish(self.set_self_states[i])
-            rospy.loginfo(f"Agent {self.agents[i]} assigned random start position: ({sx}, {sy}) and orientation: {angle:.2f}")
+            # rospy.loginfo(f"Agent {self.agents[i]} assigned random start position: ({sx}, {sy}) and orientation: {angle:.2f}")
 
         rospy.sleep(TIME_DELTA)
 
@@ -564,7 +564,7 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
         # 发布模型状态
         self.set_states[index].publish(self.set_self_states[index])
         self.odom_positions[index] = [sx, sy]  # 更新odom位置
-        rospy.loginfo(f"Agent {self.agents[index]} reset to random position: ({sx}, {sy}) and orientation: {angle:.2f}")
+        # rospy.loginfo(f"Agent {self.agents[index]} reset to random position: ({sx}, {sy}) and orientation: {angle:.2f}")
 
         # 允许仿真更新
         try:
@@ -616,4 +616,4 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
         marker_array = MarkerArray()
         marker_array.markers.append(marker)
         self.goal_marker_pubs[index].publish(marker_array)
-        rospy.loginfo(f"Published goal marker array for {self.agents[index]} at ({self.goal_positions[index][0]}, {self.goal_positions[index][1]})")
+        # rospy.loginfo(f"Published goal marker array for {self.agents[index]} at ({self.goal_positions[index][0]}, {self.goal_positions[index][1]})")
