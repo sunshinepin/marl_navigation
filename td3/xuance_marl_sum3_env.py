@@ -21,7 +21,7 @@ import yaml
 from gym.spaces import Box
 
 # 常量定义
-GOAL_REACHED_DIST = 0.3
+GOAL_REACHED_DIST = 0.35
 TIME_DELTA = 0.1
 MAX_STEPS = 500
 COLLISION_DIST = 0.35
@@ -97,6 +97,8 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
         self.max_episode_steps = env_config.max_episode_steps
         self._current_step = 0
         self.alive = [True for _ in range(self.num_agents)] 
+        self.prev_positions = [[0.0, 0.0] for _ in range(self.num_agents)]  # 记录上一步位置
+        self.direction_reward = 5.0  # 朝目标方向移动的奖励值，可调整
 
         # 初始化Gazebo环境变量
         self.start_positions = env_config.car_positions
@@ -398,6 +400,31 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
     def get_reward(self, target, collision, action, min_laser, distance, car_index):
         reward = 0.0
 
+        # 当前位置
+        current_pos = self.odom_positions[car_index]
+        # 目标位置
+        goal_pos = self.goal_positions[car_index]
+        
+        # 计算目标方向（从当前位置到目标的向量）
+        goal_direction = np.array(goal_pos) - np.array(current_pos)
+        goal_direction = goal_direction / (np.linalg.norm(goal_direction) + 1e-6)  # 归一化，避免除以0
+        
+        # 计算位移方向（当前位置减去上一步位置）
+        displacement = np.array(current_pos) - np.array(self.prev_positions[car_index])
+        displacement_norm = np.linalg.norm(displacement)
+        
+        # 如果有位移，检查是否朝目标方向移动
+        if displacement_norm > 0:  # 确保有移动
+            displacement_direction = displacement / displacement_norm  # 归一化位移
+            # 计算点积：如果点积大于0，说明朝目标方向移动
+            dot_product = np.dot(displacement_direction, goal_direction)
+            if dot_product > 0:  # 朝目标方向移动
+                reward += self.direction_reward  # 给予方向奖励
+
+        # 更新上一步位置
+        self.prev_positions[car_index] = current_pos.copy()
+
+        # 保持原有奖励逻辑
         if target and not self.goal_reward_given[car_index]:
             reward += GOAL_REWARD  # 到达目标奖励
             self.goal_reward_given[car_index] = True
@@ -409,7 +436,8 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
         else:
             r3 = lambda x: 1 - x if x < 1 else 0.0
             reward += action[0] / 2 - abs(action[1]) / 2 - r3(min_laser) / 2 
-            # 添加全局奖励：如果所有智能体都到达目标
+
+        # 添加全局奖励：如果所有智能体都到达目标
         if all(self.target_reached):
             reward += 50.0  # 额外协同奖励
 
@@ -425,6 +453,10 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
         self.target_reached = [False for _ in range(self.num_agents)]
         self.goal_reward_given = [False for _ in range(self.num_agents)]
         self.alive = [True for _ in range(self.num_agents)]  # 重置时所有智能体复活
+        # 重置上一步位置
+        for i in range(self.num_agents):
+            self.prev_positions[i] = self.odom_positions[i].copy()
+        
         try:
             self.reset_proxy()
         except rospy.ServiceException as e:
