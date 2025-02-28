@@ -20,7 +20,7 @@ from xuance.environment import RawMultiAgentEnv
 import yaml
 from gym.spaces import Box
 
-# 常量定义
+# 常量定义 
 GOAL_REACHED_DIST = 0.35
 TIME_DELTA = 0.1
 MAX_STEPS = 500
@@ -29,6 +29,7 @@ COLLISION_PENALTY = -100.0  # 碰撞惩罚
 GOAL_REWARD = 100.0  # 达到目标的奖励
 STAY_REWARD = 1.0  # 停留在目标区域的奖励
 MIN_GOAL_DISTANCE = 1.0  # 目标之间的最小距离
+
 
 def check_pos(x, y):
     a =0.5
@@ -63,17 +64,14 @@ def check_pos(x, y):
     return goal_ok
 
 def generate_unique_goal(existing_positions, lower, upper, reference_positions):
-    """
-    生成一个唯一的位置，确保与现有位置和参考位置之间的距离大于 MIN_GOAL_DISTANCE。
-    existing_positions: 已生成的位置列表（如已有目标或已有起始位置）
-    reference_positions: 参考位置列表（如目标位置生成时参考起始位置，反之亦然）
-    """
     while True:
         x = np.random.uniform(lower, upper)
         y = np.random.uniform(lower, upper)
+        # 只取 reference_positions 的前两个值（x, y）
+        ref_positions_2d = [(pos[0], pos[1]) for pos in reference_positions]
         if check_pos(x, y) and all(
             np.linalg.norm([x - px, y - py]) > MIN_GOAL_DISTANCE 
-            for px, py in existing_positions + reference_positions
+            for px, py in existing_positions + ref_positions_2d
         ):
             return x, y
 
@@ -91,7 +89,7 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
             for agent in self.agents
         }
         self.observation_space = {
-            agent: spaces.Box(low=-np.inf, high=np.inf, shape=(24,), dtype=np.float32)
+            agent: spaces.Box(low=-np.inf, high=np.inf, shape=(24 + 3 * (self.num_agents - 1),), dtype=np.float32)
             for agent in self.agents
         }
         self.max_episode_steps = env_config.max_episode_steps
@@ -99,7 +97,8 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
         self.alive = [True for _ in range(self.num_agents)] 
         self.prev_positions = [[0.0, 0.0] for _ in range(self.num_agents)]  # 记录上一步位置
         self.direction_reward_scale = 1.0  # 方向奖励的系数，可调整
-        self.direction_penalty_scale = 1.0  # 方向惩罚的系数，可调整
+        self.direction_penalty_scale = 2.0  # 方向惩罚的系数，可调整
+        
         # 初始化Gazebo环境变量
         self.start_positions = env_config.car_positions
         self.start_orientations = env_config.car_orientations
@@ -195,6 +194,24 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
         """Returns boolean mask variables indicating which agents are currently alive."""
         return {agent: self.alive[i] for i, agent in enumerate(self.agents)}
     
+    def check_agent_collision(self):
+        """检查智能体间的碰撞"""
+        collisions = []
+        for i in range(self.num_agents):
+            if not self.alive[i]:
+                collisions.append(False)
+                continue
+            collision = False
+            for j in range(self.num_agents):
+                if i != j and self.alive[j]:
+                    dist = np.linalg.norm(
+                        np.array(self.odom_positions[i]) - np.array(self.odom_positions[j])
+                    )
+                    if dist < COLLISION_DIST:  # 智能体间碰撞阈值与障碍物一致
+                        collision = True
+                        break
+            collisions.append(collision)
+        return collisions
     def state(self):
         global_state = []
         for i in range(self.num_agents):
@@ -269,10 +286,8 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
         处理里程计数据回调。
         """
         self.last_odom[index] = od_data
+
     def step(self, action_dict):
-        """
-        执行动作，更新环境状态，并返回新的观测、奖励、完成标志和信息
-        """
         self._current_step += 1
         observation = {}
         rewards = {}
@@ -280,25 +295,21 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
         dones = {}
         infos = {}
 
-        # 应用动作（只对存活的智能体）
         for i, agent in enumerate(self.agents):
-            if self.alive[i]:  # 只对存活的智能体应用动作
+            if self.alive[i]:
                 action = action_dict[agent]
                 action[0] = np.clip(action[0], self.action_space[agent].low[0], self.action_space[agent].high[0])
                 action[1] = np.clip(action[1], self.action_space[agent].low[1], self.action_space[agent].high[1])
-
                 vel_cmd = Twist()
-                vel_cmd.linear.x = (action[0]+1)/2
+                vel_cmd.linear.x = (action[0] + 1) / 2
                 vel_cmd.angular.z = action[1]
                 self.vel_pubs[i].publish(vel_cmd)
             else:
-                # 对死亡的智能体发布零速度
                 vel_cmd = Twist()
                 vel_cmd.linear.x = 0.0
                 vel_cmd.angular.z = 0.0
                 self.vel_pubs[i].publish(vel_cmd)
 
-        # 仿真步骤
         rospy.wait_for_service("/gazebo/unpause_physics")
         try:
             self.unpause()
@@ -311,12 +322,13 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
         except rospy.ServiceException as e:
             print("/gazebo/pause_physics service call failed")
 
-        # 收集观测和计算奖励
+        agent_collisions = self.check_agent_collision()
         all_dead = True
-        for i, agent in enumerate(self.agents):
-            if self.alive[i]:  # 只处理存活的智能体
-                done, collision, min_laser = self.observe_collision(self.velodyne_data[i])
 
+        for i, agent in enumerate(self.agents):
+            if self.alive[i]:
+                done, collision, min_laser = self.observe_collision(self.velodyne_data[i])
+                self.prev_positions[i] = self.odom_positions[i].copy()
                 if self.last_odom[i] is not None:
                     self.odom_positions[i][0] = self.last_odom[i].pose.pose.position.x
                     self.odom_positions[i][1] = self.last_odom[i].pose.pose.position.y
@@ -329,62 +341,67 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
                     euler = quaternion.to_euler(degrees=False)
                     angle = round(euler[2], 4)
                 else:
-                    angle = 0.0
+                    angle = self.start_orientations[i]
 
                 distance = np.linalg.norm([
                     self.odom_positions[i][0] - self.goal_positions[i][0],
                     self.odom_positions[i][1] - self.goal_positions[i][1]
                 ])
-                # 计算角度差
                 skew_x = self.goal_positions[i][0] - self.odom_positions[i][0]
                 skew_y = self.goal_positions[i][1] - self.odom_positions[i][1]
                 dot = skew_x * 1 + skew_y * 0
                 mag1 = np.linalg.norm([skew_x, skew_y])
                 mag2 = 1.0
                 beta = np.arccos(dot / (mag1 * mag2)) if mag1 != 0 else 0.0
-
                 if skew_y < 0:
                     beta = -beta if skew_x >= 0 else beta
-
                 theta = beta - angle
                 theta = (theta + np.pi) % (2 * np.pi) - np.pi
 
-                # 检查是否到达目标
                 if distance < GOAL_REACHED_DIST and not self.target_reached[i]:
                     self.target_reached[i] = True
-                    self.alive[i] = False  # 到达目标后标记死亡
-                    rospy.loginfo(f"Agent {i} reached the goal and died.")
+                    self.alive[i] = False
+                    rospy.loginfo(f"Agent {i} reached the goal and stopped.")
+                if collision or agent_collisions[i]:
+                    self.reset_car_position(i)
+                    rospy.loginfo(f"Agent {i} collided and was reset.")
+                    dones[agent] = False
+                else:
+                    dones[agent] = not self.alive[i]
+                    all_dead = False
 
-                # 处理碰撞
-                if collision:
-                    self.alive[i] = False  # 碰撞后标记死亡
-                    rospy.loginfo(f"Agent {i} died due to collision")
+                laser_state = self.velodyne_data[i]
+                robot_state = [distance, theta, action_dict[agent][0], action_dict[agent][1]]
+                relative_positions = []
+                for j in range(self.num_agents):
+                    if j != i:  # 只处理其他智能体
+                        if self.alive[j]:
+                            rel_x = self.odom_positions[j][0] - self.odom_positions[i][0]
+                            rel_y = self.odom_positions[j][1] - self.odom_positions[i][1]
+                            rel_dist = np.linalg.norm([rel_x, rel_y])
+                            relative_positions.extend([rel_x, rel_y, rel_dist])
+                        else:
+                            relative_positions.extend([0.0, 0.0, 0.0])
+                observation[agent] = np.concatenate([laser_state, robot_state, relative_positions])
 
-                all_dead = False  # 只要有一个存活就不是全死
+                reward = self.get_reward(
+                    self.target_reached[i],
+                    collision or agent_collisions[i],
+                    action_dict[agent],
+                    min_laser,
+                    distance,
+                    i
+                )
+                rewards[agent] = reward
+                infos[agent] = {"alive": self.alive[i], "reached_goal": self.target_reached[i]}
+                self.record_trajectory(i)
+            else:
+                observation[agent] = np.zeros(24 + 3 * (self.num_agents - 1))
+                rewards[agent] = 0.0
+                dones[agent] = True
+                infos[agent] = {"alive": False, "reached_goal": self.target_reached[i]}
 
-            # 设置终止条件
-            done_episode = self._current_step >= self.max_episode_steps
-            dones[agent] = not self.alive[i]  # 每个智能体的done状态取决于是否存活
-            truncated = truncated or all_dead  # 回合结束条件：达到最大步数或全死
-
-            # 计算观测
-            laser_state = self.velodyne_data[i]
-            robot_state = [distance, theta, action_dict[agent][0], action_dict[agent][1]] if self.alive[i] else [0.0, 0.0, 0.0, 0.0]
-            observation[agent] = np.concatenate([laser_state, robot_state])
-
-            # 计算奖励
-            reward = self.get_reward(
-                self.target_reached[i], 
-                collision if self.alive[i] else False, 
-                action_dict[agent] if self.alive[i] else [0.0, 0.0], 
-                min_laser if self.alive[i] else 0.0, 
-                distance if self.alive[i] else 0.0, 
-                i
-            )
-            rewards[agent] = reward
-            infos[agent] = {"alive": self.alive[i], "reached_goal": self.target_reached[i]}
-            self.record_trajectory(i)
-
+        truncated = truncated or all_dead
         return observation, rewards, dones, truncated, infos
     
     def observe_collision(self, laser_data):
@@ -399,68 +416,58 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
     
     def get_reward(self, target, collision, action, min_laser, distance, car_index):
         reward = 0.0
-
-        # 当前位置
         current_pos = self.odom_positions[car_index]
-        # 目标位置
         goal_pos = self.goal_positions[car_index]
-        
-        # 计算目标方向（从当前位置到目标的向量）
+
+        # 方向奖励/惩罚
         goal_direction = np.array(goal_pos) - np.array(current_pos)
-        goal_direction = goal_direction / (np.linalg.norm(goal_direction) + 1e-6)  # 归一化，避免除以0
-        
-        # 计算位移方向（当前位置减去上一步位置）
+        goal_direction /= (np.linalg.norm(goal_direction) + 1e-6)
         displacement = np.array(current_pos) - np.array(self.prev_positions[car_index])
         displacement_norm = np.linalg.norm(displacement)
-        
-        # 如果有位移，检查是否朝目标方向移动
-        if displacement_norm > 0.01:  # 增加最小移动阈值，避免噪声
-            displacement_direction = displacement / displacement_norm  # 归一化位移
-            # 计算点积
+        if displacement_norm > 0.01:
+            displacement_direction = displacement / displacement_norm
             dot_product = np.dot(displacement_direction, goal_direction)
-            
-            # 动态奖励/惩罚：根据点积和位移幅度
-            if dot_product > 0:  # 朝目标方向移动
-                reward += self.direction_reward_scale * dot_product * displacement_norm  # 奖励与方向和距离成正比
-            elif dot_product < 0:  # 反向移动
-                reward -= self.direction_penalty_scale * abs(dot_product) * displacement_norm  # 惩罚与反方向和距离成正比
+            if dot_product > 0:
+                # reward += self.direction_reward_scale * dot_product * displacement_norm
+                reward += self.direction_reward_scale * dot_product
+            elif dot_product < 0:
+                # reward -= self.direction_penalty_scale * abs(dot_product) * displacement_norm
+                reward -= self.direction_penalty_scale * abs(dot_product)
 
-        # 更新上一步位置
-        self.prev_positions[car_index] = current_pos.copy()
+        # 新增：邻近惩罚
+        min_agent_dist = float('inf')
+        for j in range(self.num_agents):
+            if j != car_index and self.alive[j]:
+                dist = np.linalg.norm(np.array(current_pos) - np.array(self.odom_positions[j]))
+                min_agent_dist = min(min_agent_dist, dist)
+        if min_agent_dist < 1.0:  # 安全距离阈值，可调整
+            reward -= 10.0 * (1.0 - min_agent_dist)  # 接近时惩罚
 
-        # 保持原有奖励逻辑
+        # 现有奖励逻辑
         if target and not self.goal_reward_given[car_index]:
-            reward += GOAL_REWARD  # 到达目标奖励
+            reward += GOAL_REWARD
             self.goal_reward_given[car_index] = True
-        elif target:  # 死亡后仍因到达目标给小奖励
-            reward += 1.0
-
+        elif target:
+            reward += STAY_REWARD
         if collision:
-            reward += COLLISION_PENALTY  # 碰撞惩罚
+            reward += COLLISION_PENALTY
         else:
             r3 = lambda x: 1 - x if x < 1 else 0.0
-            reward += action[0] / 2 - abs(action[1]) / 2 - r3(min_laser) / 2 
+            reward += action[0] / 2 - abs(action[1]) / 2 - r3(min_laser) / 2
 
-        # 添加全局奖励：如果所有智能体都到达目标
         if all(self.target_reached):
-            reward += 50.0  # 额外协同奖励
-
+            reward += 50.0  # 协作奖励
         return reward
 
     def reset(self):
-        """
-        重置环境到初始状态，并返回初始观测。
-        每次重置时随机生成起始位置和朝向，并在RViz中显示目标点。
-        """
         self.steps = 0
         self._current_step = 0
         self.target_reached = [False for _ in range(self.num_agents)]
         self.goal_reward_given = [False for _ in range(self.num_agents)]
-        self.alive = [True for _ in range(self.num_agents)]  # 重置时所有智能体复活
-        # 重置上一步位置
+        self.alive = [True for _ in range(self.num_agents)]
         for i in range(self.num_agents):
             self.prev_positions[i] = self.odom_positions[i].copy()
-        
+
         try:
             self.reset_proxy()
         except rospy.ServiceException as e:
@@ -472,20 +479,20 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
             rospy.logerr("调用 /gazebo/unpause_physics 服务失败")
         rospy.sleep(TIME_DELTA * 2)
 
-        # 生成目标位置并发布Marker
         existing_goals = []
         for i in range(self.num_agents):
-            gx, gy = generate_unique_goal(existing_goals, self.lower, self.upper, [])
+            start_positions_2d = [(pos[0], pos[1]) for pos in self.start_positions]
+            gx, gy = generate_unique_goal(existing_goals, self.lower, self.upper, start_positions_2d)
             self.goal_positions[i] = [gx, gy]
             existing_goals.append((gx, gy))
-            # rospy.loginfo(f"Agent {self.agents[i]} assigned goal position: ({gx}, {gy})")
-            self.publish_goal_marker(i)  # 发布目标点Marker
+            self.publish_goal_marker(i)
 
-        # 生成随机起始位置和朝向
         existing_starts = []
         for i in range(self.num_agents):
             sx, sy = generate_unique_goal(existing_starts, self.lower, self.upper, existing_goals)
             self.start_positions[i] = [sx, sy, 0.01]
+            self.odom_positions[i] = [sx, sy]  # 同步初始位置
+            self.prev_positions[i] = [sx, sy]
             existing_starts.append((sx, sy))
 
             self.start_orientations[i] = np.random.uniform(0, 2 * np.pi)
@@ -499,16 +506,24 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
             self.set_self_states[i].pose.orientation.z = q.z
             self.set_self_states[i].pose.orientation.w = q.w
             self.set_states[i].publish(self.set_self_states[i])
-            # rospy.loginfo(f"Agent {self.agents[i]} assigned random start position: ({sx}, {sy}) and orientation: {angle:.2f}")
 
-        rospy.sleep(TIME_DELTA)
-
+        rospy.sleep(1.0)  # 增加等待时间，确保 Gazebo 更新里程计
         try:
             self.pause()
         except rospy.ServiceException as e:
             rospy.logerr("调用 /gazebo/pause_physics 服务失败")
 
-        # 生成初始观测
+        # 可选：验证里程计数据
+        for i in range(self.num_agents):
+            if self.last_odom[i] is not None:
+                self.odom_positions[i][0] = self.last_odom[i].pose.pose.position.x
+                self.odom_positions[i][1] = self.last_odom[i].pose.pose.position.y
+            else:
+                rospy.logwarn(f"Agent {i} odom data not available yet, using start position")
+
+        # 打印调试信息
+        print(f"After reset, odom_positions: {self.odom_positions}")
+
         observations = {}
         for i, agent in enumerate(self.agents):
             laser_state = self.velodyne_data[i]
@@ -522,15 +537,23 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
             mag1 = np.linalg.norm([skew_x, skew_y])
             mag2 = 1.0
             beta = np.arccos(dot / (mag1 * mag2)) if mag1 != 0 else 0.0
-
             if skew_y < 0:
                 beta = -beta if skew_x >= 0 else beta
-
             theta = beta - self.start_orientations[i]
             theta = (theta + np.pi) % (2 * np.pi) - np.pi
 
             robot_state = [distance, theta, 0.0, 0.0]
-            observations[agent] = np.concatenate([laser_state, robot_state])
+            relative_positions = []
+            for j in range(self.num_agents):
+                if j != i:  # 只处理其他智能体
+                    if self.alive[j]:
+                        rel_x = self.start_positions[j][0] - self.start_positions[i][0]
+                        rel_y = self.start_positions[j][1] - self.start_positions[i][1]
+                        rel_dist = np.linalg.norm([rel_x, rel_y])
+                        relative_positions.extend([rel_x, rel_y, rel_dist])
+                    else:
+                        relative_positions.extend([0.0, 0.0, 0.0])
+            observations[agent] = np.concatenate([laser_state, robot_state, relative_positions])
 
             self.trajectories[i].points = []
             self.record_trajectory(i)
@@ -608,12 +631,27 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
         marker.scale.x = 0.2
         marker.scale.y = 0.2
         marker.scale.z = 0.2
-        marker.color.a = 1.0
-        marker.color.r = 0.0
-        marker.color.g = 1.0
-        marker.color.b = 0.0
-        
+        marker.color.a = 1.0  # 不透明度
+
+        # 根据 index 设置固定颜色
+        if index == 0:  # agent_0: 红色
+            marker.color.r = 1.0
+            marker.color.g = 0.0
+            marker.color.b = 0.0
+        elif index == 1:  # agent_1: 绿色
+            marker.color.r = 0.0
+            marker.color.g = 1.0
+            marker.color.b = 0.0
+        elif index == 2:  # agent_2: 蓝色
+            marker.color.r = 0.0
+            marker.color.g = 0.0
+            marker.color.b = 1.0
+        else:
+            # 如果有意外 index，默认灰色（仅作为保护，未使用）
+            marker.color.r = 0.5
+            marker.color.g = 0.5
+            marker.color.b = 0.5
+
         marker_array = MarkerArray()
         marker_array.markers.append(marker)
         self.goal_marker_pubs[index].publish(marker_array)
-        # rospy.loginfo(f"Published goal marker array for {self.agents[index]} at ({self.goal_positions[index][0]}, {self.goal_positions[index][1]})")
