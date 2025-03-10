@@ -19,7 +19,7 @@ from visualization_msgs.msg import Marker, MarkerArray
 from xuance.environment import RawMultiAgentEnv
 import yaml
 from gym.spaces import Box
-
+#3.1这版24
 # 常量定义 
 GOAL_REACHED_DIST = 0.35
 TIME_DELTA = 0.1
@@ -89,7 +89,7 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
             for agent in self.agents
         }
         self.observation_space = {
-            agent: spaces.Box(low=-np.inf, high=np.inf, shape=(24 + 3 * (self.num_agents - 1),), dtype=np.float32)
+            agent: spaces.Box(low=-np.inf, high=np.inf, shape=(24,), dtype=np.float32)
             for agent in self.agents
         }
         self.max_episode_steps = env_config.max_episode_steps
@@ -382,7 +382,10 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
                             relative_positions.extend([rel_x, rel_y, rel_dist])
                         else:
                             relative_positions.extend([0.0, 0.0, 0.0])
-                observation[agent] = np.concatenate([laser_state, robot_state, relative_positions])
+                # observation[agent] = np.concatenate([laser_state, robot_state, relative_positions])
+                observation[agent] = np.concatenate([laser_state, robot_state])
+
+                
 
                 reward = self.get_reward(
                     self.target_reached[i],
@@ -396,7 +399,7 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
                 infos[agent] = {"alive": self.alive[i], "reached_goal": self.target_reached[i]}
                 self.record_trajectory(i)
             else:
-                observation[agent] = np.zeros(24 + 3 * (self.num_agents - 1))
+                observation[agent] = np.zeros(24)
                 rewards[agent] = 0.0
                 dones[agent] = True
                 infos[agent] = {"alive": False, "reached_goal": self.target_reached[i]}
@@ -417,22 +420,22 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
     def get_reward(self, target, collision, action, min_laser, distance, car_index):
         reward = 0.0
         current_pos = self.odom_positions[car_index]
-        goal_pos = self.goal_positions[car_index]
+        # goal_pos = self.goal_positions[car_index]
 
-        # 方向奖励/惩罚
-        goal_direction = np.array(goal_pos) - np.array(current_pos)
-        goal_direction /= (np.linalg.norm(goal_direction) + 1e-6)
-        displacement = np.array(current_pos) - np.array(self.prev_positions[car_index])
-        displacement_norm = np.linalg.norm(displacement)
-        if displacement_norm > 0.01:
-            displacement_direction = displacement / displacement_norm
-            dot_product = np.dot(displacement_direction, goal_direction)
-            if dot_product > 0:
-                # reward += self.direction_reward_scale * dot_product * displacement_norm
-                reward += self.direction_reward_scale * dot_product
-            elif dot_product < 0:
-                # reward -= self.direction_penalty_scale * abs(dot_product) * displacement_norm
-                reward -= self.direction_penalty_scale * abs(dot_product)
+        # # 方向奖励/惩罚
+        # goal_direction = np.array(goal_pos) - np.array(current_pos)
+        # goal_direction /= (np.linalg.norm(goal_direction) + 1e-6)
+        # displacement = np.array(current_pos) - np.array(self.prev_positions[car_index])
+        # displacement_norm = np.linalg.norm(displacement)
+        # if displacement_norm > 0.01:
+        #     displacement_direction = displacement / displacement_norm
+        #     dot_product = np.dot(displacement_direction, goal_direction)
+        #     if dot_product > 0:
+        #         # reward += self.direction_reward_scale * dot_product * displacement_norm
+        #         reward += self.direction_reward_scale * dot_product
+        #     # elif dot_product < 0:
+        #     #     # reward -= self.direction_penalty_scale * abs(dot_product) * displacement_norm
+        #     #     reward -= self.direction_penalty_scale * abs(dot_product)
 
         # 新增：邻近惩罚
         min_agent_dist = float('inf')
@@ -477,7 +480,7 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
             self.unpause()
         except rospy.ServiceException as e:
             rospy.logerr("调用 /gazebo/unpause_physics 服务失败")
-        rospy.sleep(TIME_DELTA * 2)
+        rospy.sleep(TIME_DELTA * 3)
 
         existing_goals = []
         for i in range(self.num_agents):
@@ -553,7 +556,7 @@ class MyNewMultiAgentEnv(RawMultiAgentEnv):
                         relative_positions.extend([rel_x, rel_y, rel_dist])
                     else:
                         relative_positions.extend([0.0, 0.0, 0.0])
-            observations[agent] = np.concatenate([laser_state, robot_state, relative_positions])
+            observations[agent] = np.concatenate([laser_state, robot_state])
 
             self.trajectories[i].points = []
             self.record_trajectory(i)

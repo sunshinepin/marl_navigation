@@ -30,10 +30,10 @@
   <arg name="car3_y" default="0.0" />
   <arg name="car3_z" default="0.01" />
   
-  <arg name="car4_name" default="car4" />
+  <!-- <arg name="car4_name" default="car4" />
   <arg name="car4_x" default="5.0" />
   <arg name="car4_y" default="0.0" />
-  <arg name="car4_z" default="0.01" />
+  <arg name="car4_z" default="0.01" /> -->
 
   <group ns="$(arg car1_name)">
     <!-- Load the URDF for car1 into the ROS Parameter Server -->
